@@ -314,6 +314,59 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 .lb-zoom .znext{right:clamp(10px,2vw,26px)}
 @media (max-width:560px){.lb-zoom .znav{width:42px;height:42px}}
 
+/* ---------- ethos: vision / mission / values ---------- */
+.ethos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);margin-top:clamp(36px,5vw,60px)}
+.ethos-cell{background:var(--ink);padding:clamp(28px,3.5vw,46px)}
+.ethos-cell h3{font-size:1.4rem;margin-bottom:16px;color:var(--steel)}
+.ethos-cell p{color:var(--mute);font-size:.96rem}
+.ethos-cell ul{list-style:none;display:grid;gap:10px}
+.ethos-cell li{font-size:.94rem;color:var(--paper);display:flex;gap:12px;align-items:baseline}
+.ethos-cell li::before{content:"";width:6px;height:6px;background:var(--navy-glow);
+  flex-shrink:0;transform:translateY(-1px)}
+.ethos-text{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,60px);
+  margin-top:clamp(30px,4vw,52px)}
+.ethos-text h3{font-size:1.3rem;margin-bottom:14px}
+.ethos-text p{color:var(--mute);font-size:.96rem;margin-bottom:12px}
+.ethos-text p:last-child{margin-bottom:0}
+
+/* ---------- faq accordion ---------- */
+.faq-list{border-top:1px solid var(--line);margin-top:clamp(30px,4vw,50px)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;background:none;border:0;color:var(--paper);cursor:pointer;font:inherit;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;text-align:left;
+  padding:clamp(20px,2.6vw,28px) 4px;font-family:var(--d);font-weight:600;
+  font-size:clamp(1.02rem,1.9vw,1.35rem);transition:color .3s}
+.faq-q:hover,.faq-item.open .faq-q{color:var(--steel)}
+.faq-q .pl{position:relative;width:18px;height:18px;flex-shrink:0}
+.faq-q .pl::before,.faq-q .pl::after{content:"";position:absolute;background:var(--steel);
+  transition:transform .4s var(--ease)}
+.faq-q .pl::before{top:8px;left:0;width:18px;height:2px}
+.faq-q .pl::after{left:8px;top:0;width:2px;height:18px}
+.faq-item.open .faq-q .pl::after{transform:scaleY(0)}
+.faq-a{overflow:hidden;max-height:0;transition:max-height .5s var(--ease)}
+.faq-a-inner{padding:0 4px clamp(22px,2.6vw,28px);color:var(--mute);font-size:.97rem;max-width:80ch}
+.faq-a-inner p{margin-bottom:12px}.faq-a-inner p:last-child{margin-bottom:0}
+.faq-a-inner a{color:var(--steel)}
+
+/* ---------- branches ---------- */
+.branches{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);
+  margin-top:clamp(36px,5vw,56px);text-align:left}
+.branch h3{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:24px}
+.branch-row{display:flex;gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+.branch-row h5{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--steel);min-width:118px;flex-shrink:0;padding-top:2px}
+.branch-row p{color:var(--paper);font-size:.96rem;line-height:1.7}
+.branch-row a{color:var(--paper)}.branch-row a:hover{color:var(--steel)}
+@media (max-width:760px){.branches{grid-template-columns:1fr}.branch-row{flex-direction:column;gap:6px}}
+
+/* ---------- lightbox project list ---------- */
+.lb-note{color:var(--mute);font-size:.9rem;margin:-4px 0 18px;
+  max-height:24vh;overflow-y:auto;padding-right:6px}
+.lb-note ul{list-style:none;display:grid;gap:6px}
+.lb-note li{padding-left:15px;position:relative;line-height:1.5}
+.lb-note li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--navy-glow)}
+
 /* ---------- responsive ---------- */
 @media (max-width:980px){
   .intro{grid-template-columns:1fr}
@@ -321,6 +374,8 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   .stat:nth-child(3),.stat:nth-child(4){border-top:1px solid var(--line)}
   .stat:nth-child(3){border-left:none}
   .cap-grid{grid-template-columns:1fr}
+  .ethos-grid{grid-template-columns:1fr}
+  .ethos-text{grid-template-columns:1fr}
   .foot-top{grid-template-columns:1fr 1fr}
 }
 @media (max-width:760px){
@@ -378,11 +433,12 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#about" class="active">About</a>
-    <a href="#specialization">Specialization</a>
+    <a href="#services">Services</a>
     <a href="#projects">Projects</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
   </div>
-  <a href="#contact" class="nav-cta" data-cursor data-magnetic><span>Get in touch</span></a>
+  <a href="#contact" class="nav-cta" data-cursor data-magnetic><span>Get in Touch</span></a>
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
 
@@ -397,27 +453,27 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   </div>
   <canvas id="dust"></canvas>
   <div class="hero-inner">
-    <span class="eyebrow reveal">The art of the finish — since 2009</span>
+    <span class="eyebrow reveal">Fine finishing · electrical · mechanical works</span>
     <h1 class="display">
-      <span class="ln"><span>We finish to the</span></span>
-      <span class="ln"><span>slightest detail.</span></span>
+      <span class="ln"><span>Vertically specialized</span></span>
+      <span class="ln"><span>in finishing works.</span></span>
     </h1>
-    <p class="lead reveal">A vertically specialized fit-out contractor delivering world-class
-      interior and exterior finishing across Jordan and Saudi Arabia — from concept to turnkey.</p>
+    <p class="lead reveal">With our wide experience in finishing, we are committed to deliver
+      world class finishing services.</p>
     <div class="hero-row reveal">
       <a href="#projects" class="btn btn-fill" data-cursor data-magnetic>
         <span class="t">View our work</span>
         <span class="arr t">→</span>
       </a>
       <a href="#about" class="btn btn-ghost" data-cursor data-magnetic>
-        <span class="t">Who we are</span>
+        <span class="t">About us</span>
       </a>
     </div>
   </div>
   <div class="scroll-cue">SCROLL</div>
 </header>
 
-<!-- ====== INTRO ====== -->
+<!-- ====== ABOUT / OUR STORY ====== -->
 <section class="pad-y wrap" id="about">
   <div class="intro">
     <div class="intro-media reveal" data-parallax="0.1">
@@ -425,111 +481,136 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
       <span class="tag">EST. 2009 — AMMAN · RIYADH</span>
     </div>
     <div>
-      <span class="eyebrow reveal">Who we are</span>
-      <h2 class="reveal">A trusted partner in <em>finishing, electrical</em> and mechanical works.</h2>
-      <p class="lead reveal">Since 2009, Elements Interiors has delivered innovative project
-        management with transparency and exceptional value. Skilled teams, experienced
-        supervisors, and an in-house labour force — supported by our own warehouses and
-        carpentry workshop — ensure unmatched quality on every project.</p>
-      <div class="reveal" style="margin-top:34px">
-        <a href="#" class="btn btn-ghost" data-cursor data-magnetic>
-          <span class="t">Download company profile</span>
-          <span class="arr t">↓</span>
-        </a>
-      </div>
+      <span class="eyebrow reveal">About Us</span>
+      <h2 class="reveal">Our Story</h2>
+      <p class="lead reveal">Elements Construction Company, formed in 2009 and later transformed
+        into Elements Interiors, is specialized in fine finishing works, electrical works, and
+        mechanical works. Elements applies its intensive know-how through its well reputed
+        stakeholders and alliances, and continuously seeks fresh and innovative approaches to
+        project management and rewarding deliverables.</p>
+      <p class="reveal" style="color:var(--mute);margin-top:20px">Aiming for world class services,
+        our goal is to exceed the expectations of every client by offering unparalleled project
+        management techniques and excellent transparency, thus optimizing our clients' value for
+        money. Our associates' solid functional and technical expertise ensures that our clients
+        receive the most effective and professional service. Elements Interiors employs some of
+        the finest personnel covering Labor force, Vocational specialists, Supervisors, and
+        Project Managers. Elements Interiors has access to some of the finest freelance skilled
+        labor force available.</p>
+    </div>
+  </div>
+
+  <!-- vision / mission / values -->
+  <div class="ethos-grid">
+    <div class="ethos-cell reveal">
+      <h3>Vision</h3>
+      <p>While we aim to be a part of the development and growth of our region's economy, we
+        strive to reach international standards in project management and to meet our clients'
+        highest expectations.</p>
+    </div>
+    <div class="ethos-cell reveal">
+      <h3>Mission</h3>
+      <ul>
+        <li>To provide our clients with the utmost transparency through our projects' different phases;</li>
+        <li>To provide our clients with the best advice;</li>
+        <li>To provide our clients with the best attainable quality of work.</li>
+      </ul>
+    </div>
+    <div class="ethos-cell reveal">
+      <h3>Values</h3>
+      <ul>
+        <li>Strong relations with our clients, suppliers, work force, associations, and ministries;</li>
+        <li>Trust and transparency;</li>
+        <li>Goals realization;</li>
+        <li>Respond to new market trends and needs.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- approach + responsibility -->
+  <div class="ethos-text">
+    <div class="reveal">
+      <h3>Personalized Work Approach</h3>
+      <p>Due to the fact that our sector involves high level of human error, hence as business
+        owners we believe that our personal touch is integral to achieve the standards we seek to
+        reach in every project. Therefore, our personal day-to-day interference to the slightest
+        detail helps us reduce the margins of error to a very admirable level in comparison to
+        much bigger volume-oriented companies in the market.</p>
+    </div>
+    <div class="reveal">
+      <h3>Social Responsibility and Safety Measures</h3>
+      <p>As a part of our social responsibility, we always look for environmentally better ways to
+        execute our projects. We always make sure to minimize our waste through calculated
+        procurement procedures and we always try to promote more efficient, environmentally
+        friendlier alternatives to our clients.</p>
+      <p>As well, we are always up-to-date with all safety procedures and safety equipment to
+        ensure safe execution and staff wellbeing throughout our projects different phases.</p>
     </div>
   </div>
 </section>
 
-<!-- ====== SPECIALIZATION ====== -->
-<section class="pad-y wrap" id="specialization">
-  <span class="eyebrow reveal">Our specialization</span>
-  <h2 class="reveal" style="font-size:clamp(2rem,5vw,3.6rem);margin-top:20px;max-width:18ch">
-    Vertically specialized in construction finishing works.</h2>
-
-  <div class="spec-grid">
-    <div class="spec-cell reveal">
-      <div class="ico">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
-      </div>
-      <h3>Design</h3>
-      <p>Elegant yet practical design tailored to each client's lifestyle or business needs.</p>
-      <ul class="spec-list">
-        <li>Interior &amp; outdoor spaces design</li>
-        <li>Furniture &amp; landscape design</li>
-        <li>Mechanical &amp; electrical design</li>
-        <li>IT infrastructure design</li>
-        <li>Bill of quantities extraction</li>
-      </ul>
-    </div>
-    <div class="spec-cell reveal">
-      <div class="ico">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
-          <path d="M14 3h7v7M10 21H3v-7"/></svg>
-      </div>
-      <h3>Execution</h3>
-      <p>World-class quality execution, covering the full scope to turnkey delivery.</p>
-      <ul class="spec-list">
-        <li>Interior &amp; external finishing</li>
-        <li>Fine wood works — in-house carpentry</li>
-        <li>Electrical works</li>
-        <li>MEP / HVAC</li>
-        <li>IT infrastructure &amp; furnishing</li>
-      </ul>
+<!-- ====== SERVICES / OUR SPECIALIZATION ====== -->
+<section class="cap pad-y" id="services">
+  <div class="wrap">
+    <span class="eyebrow reveal">Services</span>
+    <h2 class="reveal" style="font-size:clamp(1.9rem,4.5vw,3.2rem);margin:18px 0 20px;max-width:20ch">
+      Our Specialization</h2>
+    <p class="lead reveal" style="max-width:70ch">Elements Interiors is vertically specialized in
+      construction finishing works. With our wide experience in finishing, we are committed to
+      deliver world class finishing services.</p>
+    <div class="cap-grid" style="margin-top:clamp(40px,6vw,64px)">
+      <div class="cap-cell reveal"><div class="ci">/ 01</div><h4>External Finishing</h4>
+        <p>Buildings facades, landscaping, external wood works, canopies, swimming pools,
+          electrical and lighting works, mechanical works, waterproofing, etc...</p></div>
+      <div class="cap-cell reveal"><div class="ci">/ 02</div><h4>Internal Finishing</h4>
+        <p>Block works, plastering, internal partitioning, paint, decorative paint, tiling,
+          parquet floors, PVC floors, ceiling works, wood works, carpentry, glass works, aluminum
+          works, electrical works, mechanical works, HVAC works, IT infrastructure works, etc...</p></div>
+      <div class="cap-cell reveal"><div class="ci">/ 03</div><h4>Carpentry Workshop</h4>
+        <p>Elements Interiors owns a fully fledged carpentry workshop that allows us to provide our
+          clients with excellent quality wood works, which is covered by a three years warranty
+          against natural deterioration.</p></div>
     </div>
   </div>
-</section>
-
-<!-- ====== STATS ====== -->
-<section class="stats">
-  <div class="wrap"><div class="stats-grid">
-    <div class="stat reveal"><div class="num"><span data-count="150">0</span><span class="plus">+</span></div><div class="lbl">Completed Projects</div></div>
-    <div class="stat reveal"><div class="num"><span data-count="16">0</span><span class="plus">+</span></div><div class="lbl">Years of Experience</div></div>
-    <div class="stat reveal"><div class="num"><span data-count="90">0</span><span class="plus">+</span></div><div class="lbl">Clients</div></div>
-    <div class="stat reveal"><div class="num"><span data-count="200">0</span><span class="plus">+</span></div><div class="lbl">Manpower</div></div>
-  </div></div>
 </section>
 
 <!-- ====== PROJECTS ====== -->
 <section class="pad-y wrap" id="projects">
   <div class="proj-head">
     <div>
-      <span class="eyebrow reveal">Selected work</span>
-      <h2 class="reveal" style="margin-top:18px">Our recent projects</h2>
+      <span class="eyebrow reveal">Projects</span>
+      <h2 class="reveal" style="margin-top:18px">Recent Projects</h2>
     </div>
     <p class="lead reveal" style="max-width:34ch;font-size:1rem">
-      Commercial fit-out across hospitality, F&amp;B, corporate offices and BPO floors.</p>
+      Click a category to view its gallery and full project list.</p>
   </div>
 
   <div class="proj-grid" id="projList">
     <button type="button" class="proj-card reveal" data-cursor-view
-         data-title="Commercial Buildings" data-sub="Abdali Boulevard · Eqtidar · FES">
+         data-title="Commercial Buildings" data-sub="3 projects">
       <img src="images/Commercial%20buildings/f6e6182a-78b8-4b93-86be-b5e916f61250.jpg" loading="lazy" alt="Commercial Buildings — Elements Interiors" />
       <span class="count">3 photos</span>
-      <span class="cap"><span><span class="idx">01</span><span class="nm">Commercial Buildings</span><span class="meta">FIT-OUT · MEP</span></span></span>
+      <span class="cap"><span><span class="idx">01</span><span class="nm">Commercial Buildings</span><span class="meta">FINISHING · MEP · WOOD WORKS</span></span></span>
     </button>
     <button type="button" class="proj-card reveal" data-cursor-view
-         data-title="Commercial Spaces" data-sub="Holiday Inn · Nespresso · My Gym">
+         data-title="Commercial Spaces" data-sub="7 projects">
       <img src="images/Commercial%20spaces/646dbc1c-51af-43ac-bd3b-68da2727dbaf.jpg" loading="lazy" alt="Commercial Spaces — Elements Interiors" />
       <span class="count">6 photos</span>
       <span class="cap"><span><span class="idx">02</span><span class="nm">Commercial Spaces</span><span class="meta">FINISHING · MEP</span></span></span>
     </button>
     <button type="button" class="proj-card reveal" data-cursor-view
-         data-title="F&amp;B" data-sub="Little Italy · Wox &amp; Co. · 7 Barrels">
+         data-title="F&amp;B" data-sub="11 projects">
       <img src="images/FnB/cab02376-c633-4845-8250-a99c80290ce6.jpg" loading="lazy" alt="F&amp;B — Elements Interiors" />
       <span class="count">19 photos</span>
-      <span class="cap"><span><span class="idx">03</span><span class="nm">F&amp;B</span><span class="meta">DESIGN · FINISHING</span></span></span>
+      <span class="cap"><span><span class="idx">03</span><span class="nm">F&amp;B</span><span class="meta">FINISHING · MEP</span></span></span>
     </button>
     <button type="button" class="proj-card reveal" data-cursor-view
-         data-title="Offices" data-sub="Ogilvy · Publicis · Etihad Rail">
+         data-title="Offices" data-sub="12 projects">
       <img src="images/Offices/288da9bc-871e-4c83-9ed1-d4e2757229f1.jpg" loading="lazy" alt="Offices — Elements Interiors" />
       <span class="count">12 photos</span>
-      <span class="cap"><span><span class="idx">04</span><span class="nm">Offices</span><span class="meta">DESIGN · FIT-OUT · MEP</span></span></span>
+      <span class="cap"><span><span class="idx">04</span><span class="nm">Offices</span><span class="meta">DESIGN · FINISHING · MEP</span></span></span>
     </button>
     <button type="button" class="proj-card reveal" data-cursor-view
-         data-title="BPO Spaces" data-sub="Crystel · Oasis Communications">
+         data-title="BPO Spaces" data-sub="7 projects">
       <img src="images/BPO/c4e2325e-0a78-4dcc-a574-6076bf7e33e8.jpg" loading="lazy" alt="BPO Spaces — Elements Interiors" />
       <span class="count">10 photos</span>
       <span class="cap"><span><span class="idx">05</span><span class="nm">BPO Spaces</span><span class="meta">DESIGN · FINISHING · MEP</span></span></span>
@@ -537,34 +618,86 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   </div>
 </section>
 
-<!-- ====== CAPABILITIES ====== -->
-<section class="cap pad-y">
-  <div class="wrap">
-    <span class="eyebrow reveal">Full scope</span>
-    <h2 class="reveal" style="font-size:clamp(1.9rem,4.5vw,3.2rem);margin:18px 0 0;max-width:20ch">
-      One contractor, every trade — to the slightest detail.</h2>
-    <div class="cap-grid" style="margin-top:clamp(40px,6vw,64px)">
-      <div class="cap-cell reveal"><div class="ci">/ 01</div><h4>External Finishing</h4>
-        <p>Façades, landscaping, external wood works, canopies, pools, lighting, waterproofing.</p></div>
-      <div class="cap-cell reveal"><div class="ci">/ 02</div><h4>Internal Finishing</h4>
-        <p>Partitioning, plastering, decorative paint, tiling, parquet, ceilings, glass &amp; aluminium.</p></div>
-      <div class="cap-cell reveal"><div class="ci">/ 03</div><h4>Carpentry Workshop</h4>
-        <p>Our in-house workshop delivers fine wood works under a three-year warranty.</p></div>
+<!-- ====== FAQ ====== -->
+<section class="pad-y wrap" id="faq">
+  <span class="eyebrow reveal">Get in Touch</span>
+  <h2 class="reveal" style="font-size:clamp(1.9rem,4.5vw,3.2rem);margin-top:18px">F.A.Q.</h2>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <button class="faq-q" type="button">Where are Elements Interiors branches?<span class="pl"></span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Elements Interiors has Two branches:</p>
+        <p>1) Amman, Jordan, <a href="#contact">Click Here</a> for more information<br>
+           2) Riyadh, KSA <a href="#contact">Click Here</a> for more information</p>
+      </div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">What services does your company provide?<span class="pl"></span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Elements Interiors is vertically specialized in construction finishing works. With our
+          wide experience in finishing (Design and Execution), we are committed to deliver world
+          class finishing services.</p>
+        <p>External Finishing: buildings facades, landscaping, external wood works, canopies,
+          swimming pools, electrical and lighting works, mechanical works, waterproofing, etc…</p>
+        <p>Internal Finishing: block works, plastering, internal partitioning, paint, decorative
+          paint, tiling, parquet floors, PVC floors, ceiling works, wood works, carpentry, glass
+          works, aluminum works, electrical works, mechanical works, HVAC works, IT infrastructure
+          works, etc…</p>
+      </div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">Can you handle both residential and commercial projects?<span class="pl"></span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Elements Interiors does not work on inhabited residential projects, we only focus on
+          commercial projects and uninhabited residential projects.</p>
+      </div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">How do you ensure quality and safety during projects?<span class="pl"></span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>We follow strict safety procedures and stay up-to-date with the latest safety standards.
+          Additionally, we prioritize quality control through hands-on supervision and transparent
+          communication with our clients to ensure every detail is perfect.</p>
+      </div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">Are your designs environmentally friendly?<span class="pl"></span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes, we are committed to eco-friendly practices. We minimize waste through efficient
+          procurement procedures and promote sustainable, energy-efficient solutions to reduce
+          environmental impact.</p>
+      </div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" type="button">Do you offer warranties on your work?<span class="pl"></span></button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes. in general, our work is covered by a solid warranty that ensures clients'
+          satisfaction.</p>
+      </div></div>
     </div>
   </div>
 </section>
 
-<!-- ====== CTA BAND ====== -->
+<!-- ====== CONTACT / OUR BRANCHES ====== -->
 <section class="cta-band" id="contact">
   <div class="bg" data-parallax="0.12"><img src="images/extra%20photos/5d4d6d6a-5296-4a29-9751-e6a8528850b9.jpg" alt=""></div>
   <div class="wrap">
-    <span class="eyebrow reveal" style="justify-content:center">Start a project</span>
-    <h2 class="reveal">Have a space worth finishing properly?</h2>
-    <p class="lead reveal">Connecting with us is quick and easy — tell us about your project and our
-      team will get back to you.</p>
-    <a href="mailto:info@elementsmena.com" class="btn btn-fill reveal" data-cursor data-magnetic>
-      <span class="t">Reach out today</span><span class="arr t">→</span>
-    </a>
+    <span class="eyebrow reveal" style="justify-content:center">Get in Touch</span>
+    <h2 class="reveal">Our Branches</h2>
+    <div class="branches reveal">
+      <div class="branch">
+        <h3>Amman – Jordan</h3>
+        <div class="branch-row"><h5>Our Location</h5><p>First floor, Campbell gray building<br>Abdali Boulevard</p></div>
+        <div class="branch-row"><h5>Call Us</h5><p>Tel: <a href="tel:+96262221630">+962 6 2221630</a><br>Mob: <a href="tel:+962777224407">+962 777 224407</a></p></div>
+        <div class="branch-row"><h5>Our Email</h5><p><a href="mailto:info@elementsmena.com">info@elementsmena.com</a><br><a href="mailto:elements.jordan@gmail.com">elements.jordan@gmail.com</a></p></div>
+      </div>
+      <div class="branch">
+        <h3>Riyadh – KSA</h3>
+        <div class="branch-row"><h5>Our Location</h5><p>Al Faisaliah Tower<br>18th - Floor</p></div>
+        <div class="branch-row"><h5>Call Us</h5><p>Tel: <a href="tel:+966114903800">+966 11 4903800</a><br>Mob: <a href="tel:+966561366421">+966 561 366421</a></p></div>
+        <div class="branch-row"><h5>Our Email</h5><p><a href="mailto:info@elementsmena.com">info@elementsmena.com</a><br><a href="mailto:elements.jordan@gmail.com">elements.jordan@gmail.com</a></p></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -580,34 +713,37 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
           </svg>
           <span class="word">ELEMENTS<i>Interiors</i></span>
         </a>
-        <p>Fine finishing, electrical and mechanical works. Delivering world-class quality
-          since 2009.</p>
+        <p>Specialized in fine finishing works, electrical works, and mechanical works.
+          Formed in 2009.</p>
       </div>
       <div class="foot-col">
         <h5>Company</h5>
         <ul>
-          <li><a href="#about">Who we are</a></li>
-          <li><a href="#specialization">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h5>Amman · Jordan</h5>
         <ul>
-          <li>Campbell Gray Building<br>Abdali Boulevard</li>
-          <li><a href="tel:+96262221630">+962 6 2221630</a></li>
-          <li><a href="tel:+962777224407">+962 777 224407</a></li>
+          <li>First floor, Campbell gray building<br>Abdali Boulevard</li>
+          <li>Tel: <a href="tel:+96262221630">+962 6 2221630</a></li>
+          <li>Mob: <a href="tel:+962777224407">+962 777 224407</a></li>
           <li><a href="mailto:info@elementsmena.com">info@elementsmena.com</a></li>
+          <li><a href="mailto:elements.jordan@gmail.com">elements.jordan@gmail.com</a></li>
         </ul>
       </div>
       <div class="foot-col">
         <h5>Riyadh · KSA</h5>
         <ul>
-          <li>Al Faisaliah Tower<br>18th Floor</li>
-          <li><a href="tel:+966114903800">+966 11 4903800</a></li>
-          <li><a href="tel:+966561366421">+966 561 366421</a></li>
+          <li>Al Faisaliah Tower<br>18th - Floor</li>
+          <li>Tel: <a href="tel:+966114903800">+966 11 4903800</a></li>
+          <li>Mob: <a href="tel:+966561366421">+966 561 366421</a></li>
           <li><a href="mailto:info@elementsmena.com">info@elementsmena.com</a></li>
+          <li><a href="mailto:elements.jordan@gmail.com">elements.jordan@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -624,6 +760,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
     <div class="ttl" id="lbTitle">Project<small id="lbSub"></small></div>
     <button class="lb-close" id="lbClose" data-cursor aria-label="Close gallery">✕</button>
   </div>
+  <div class="lb-note" id="lbNote"></div>
   <div class="lb-grid" id="lbGrid"></div>
 </div>
 
@@ -754,7 +891,7 @@ document.querySelectorAll('[data-count]').forEach(el=>{
 
 /* ===== ACTIVE NAV LINK (IntersectionObserver) ===== */
 const links={};document.querySelectorAll('.nav-links a').forEach(a=>links[a.getAttribute('href').slice(1)]=a);
-['about','specialization','projects','contact'].map(id=>document.getElementById(id)).filter(Boolean)
+['about','services','projects','faq','contact'].map(id=>document.getElementById(id)).filter(Boolean)
   .forEach(s=>{
     if(!('IntersectionObserver' in window))return;
     new IntersectionObserver((entries)=>{
@@ -859,15 +996,72 @@ const GALLERIES={
   "images/BPO/ead1232d-2940-40ae-b1b9-3586977c5baa.jpg"
  ]
 };
+/* full project list per category (verbatim) */
+const PROJECT_LISTS={
+ "Commercial Buildings":[
+  "Abdali Boulevard - Sector A (167 apartments) (wood works installation)",
+  "3B1 (Eqtidar Building) - Abdali Area (core finishing – 10 floors)",
+  "Friedrich Ebert Foundation – Offices building (refurbishment and MEP)"
+ ],
+ "Commercial Spaces":[
+  "Holiday Inn Amman – Business Center (finishing)",
+  "Holiday Inn Amman – Multipurpose Hall (finishing & MEP)",
+  "Holiday Inn Amman – Grand Ballroom (finishing)",
+  "Nespresso Boutique – (finishing & MEP)",
+  "My Gym Abdoun (finishing & MEP)",
+  "My Gym Zara Center (finishing & MEP)",
+  "Specialized Medical Center – 420 SQM (finishing & MEP)"
+ ],
+ "F&B":[
+  "Little Italy Taj Mall (finishing)",
+  "Café Hanin extension Taj Mall (finishing & MEP)",
+  "Café Hanin Abdali Mall (finishing & MEP)",
+  "Little Italy Pizzeria Abdoun complex (finishing & MEP)",
+  "Majnoun Qahwa Abdoun complex (finishing & MEP)",
+  "Hisham Hotel Amman – 7 Barrels Bar-Restaurant (finishing & MEP)",
+  "French Quarter – Holiday Inn Amman (finishing & MEP)",
+  "Wox & Co. Abdali Mall (finishing & MEP)",
+  "Free The Fork – Abdali Boulevard (finishing & MEP)",
+  "Fyxx – Sweifieh Village (finishing & MEP)",
+  "Odyssey – Abdoun (redesign, finishing & MEP)"
+ ],
+ "Offices":[
+  "Al Rajehi Group offices; 3,800 sqm – Abdali area (finishing)",
+  "Hungarian Airlines Offices - Malev (finishing & MEP)",
+  "Fig Tree Ventures Offices – 650 SQM (finishing & MEP)",
+  "Future Steel Offices – 290 SQM (finishing & MEP)",
+  "Adib Habayeb Lawyers & Advocates Offices – 350 SQM (finishing & MEP)",
+  "Memac Ogilvy Advertising Agency – 660 SQM (finishing & MEP)",
+  "APCO Worldwide Amman office – 520 SQM (design, finishing & MEP)",
+  "Fatayerji Contracting Company (Jed, KSA) – Office building (design, finishing & MEP)",
+  "Etihad Rail Company (Jordan) – Office (design, finishing & MEP)",
+  "NICC (Jordan) – Office (design, finishing & MEP)",
+  "First Consolidated Contractors - Riyadh, KSA (Design, finishing & MEP)",
+  "Publicis Groupe - Jordan Office (Design, finishing & MEP)"
+ ],
+ "BPO Spaces":[
+  "Crystel Offices 9th floor – 1200 SQM (finishing & MEP)",
+  "Crystel Offices 7th floor – 1100 SQM (design, finishing & MEP)",
+  "Crystel Offices 1st floor – 1100 SQM (design, finishing & MEP)",
+  "Crystel Offices 3rd floor – 1100 SQM (design, finishing & MEP)",
+  "Crystel Offices (Aqaba branch) – 850 SQM (design, finishing & MEP)",
+  "Oasis Communications (Riyadh, KSA) – 1780 SQM (design, finishing & MEP)",
+  "Oasis Communications (Riyadh, KSA) – 1490 SQM (design, finishing & MEP)"
+ ]
+};
 const lb=document.getElementById('lb'),lbGrid=document.getElementById('lbGrid'),
       lbTitle=document.getElementById('lbTitle'),lbSub=document.getElementById('lbSub'),
-      lbClose=document.getElementById('lbClose');
+      lbNote=document.getElementById('lbNote'),lbClose=document.getElementById('lbClose');
 let curSet=[];               /* images in the currently open gallery */
 document.querySelectorAll('.proj-card').forEach((item)=>{
   item.addEventListener('click',()=>{
     const title=item.dataset.title.replace('&amp;','&');
     lbTitle.childNodes[0].nodeValue=title;
     lbSub.textContent=item.dataset.sub.replace('&amp;','&');
+    const list=PROJECT_LISTS[title]||[];
+    lbNote.innerHTML = list.length
+      ? '<ul>'+list.map(p=>'<li>'+p.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</li>').join('')+'</ul>'
+      : '';
     lbGrid.innerHTML='';
     curSet=(GALLERIES[title]||[]).slice();
     curSet.forEach((src,idx)=>{
@@ -903,6 +1097,19 @@ addEventListener('keydown',e=>{
   if(!lbZoom.classList.contains('open'))return;
   if(e.key==='ArrowLeft')step(-1);
   if(e.key==='ArrowRight')step(1);
+});
+
+/* ===== FAQ ACCORDION ===== */
+document.querySelectorAll('.faq-item').forEach(it=>{
+  const q=it.querySelector('.faq-q'), a=it.querySelector('.faq-a');
+  q.addEventListener('click',()=>{
+    const isOpen=it.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o=>{
+      if(o!==it){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null;}
+    });
+    if(isOpen){it.classList.remove('open');a.style.maxHeight=null;}
+    else{it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
+  });
 });
 </script>
 </body>
