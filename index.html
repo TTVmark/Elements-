@@ -121,7 +121,12 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   isolation:isolate;background:var(--ink);
   padding-bottom:clamp(48px,8vh,90px)}
 .hero-media{position:absolute;inset:0;z-index:0}
-.hero-media img{width:100%;height:120%;object-fit:cover;filter:grayscale(.4) contrast(1.05)}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:grayscale(.4) contrast(1.05);opacity:0;transform:scale(1.06);
+  transition:opacity 1.7s var(--ease);will-change:opacity,transform}
+.hero-slide.on{opacity:1}
+.hero-slide.ken{animation:heroKen 8.2s ease-out forwards}
+@keyframes heroKen{from{transform:scale(1.06)}to{transform:scale(1.17)}}
 .hero-media::after{content:"";position:absolute;inset:0;
   background:
     linear-gradient(180deg,rgba(10,12,15,.55) 0%,rgba(10,12,15,.2) 35%,rgba(10,12,15,.95) 100%),
@@ -357,7 +362,9 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 <!-- ====== HERO ====== -->
 <header class="hero">
   <div class="hero-media" data-parallax="0.15">
-    <img src="https://images.unsplash.com/photo-1767294273711-29306e032051?auto=format&fit=crop&w=1920&q=80" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1920&q=80'" alt="" />
+    <img class="hero-slide" src="images/extra%20photos/WhatsApp%20Image%202025-04-20%20at%2021.35.57.jpeg" alt="Elements Interiors — glass courtyard finishing" />
+    <img class="hero-slide" src="images/extra%20photos/603bcb5f-dbd2-49d4-9c0a-78e929289d8b.jpg" alt="Elements Interiors — executive office finishing" />
+    <img class="hero-slide" src="images/extra%20photos/5db36576-0810-4939-8b34-fa18b9f4f04b.jpg" alt="Elements Interiors — planted office interior" />
   </div>
   <canvas id="dust"></canvas>
   <div class="hero-inner">
@@ -385,7 +392,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 <section class="pad-y wrap" id="about">
   <div class="intro">
     <div class="intro-media reveal" data-parallax="0.1">
-      <img src="https://images.unsplash.com/photo-1706074797611-a02f9ed06439?auto=format&fit=crop&w=1000&q=80" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=80'" alt="" />
+      <img src="images/extra%20photos/684addac-bb71-4929-91a6-e20ef62c78ce.jpg" alt="Elements Interiors — planted breakout finishing" />
       <span class="tag">EST. 2009 — AMMAN · RIYADH</span>
     </div>
     <div>
@@ -468,41 +475,41 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   </div>
 
   <div class="proj-list" id="projList">
-    <div class="proj-item reveal" data-cursor-view data-img="https://images.unsplash.com/photo-1716703373041-bd135107d947?auto=format&fit=crop&w=600&q=80"
-         data-fallback="https://images.unsplash.com/photo-1767294273711-29306e032051?auto=format&fit=crop&w=600&q=80"
-         data-title="Commercial Buildings" data-sub="Abdali Boulevard · Eqtidar · FES — 12 projects">
+    <div class="proj-item reveal" data-cursor-view data-img="images/Commercial%20buildings/f6e6182a-78b8-4b93-86be-b5e916f61250.jpg"
+         data-fallback="images/Commercial%20buildings/the-boulevard-arjaan.jpg"
+         data-title="Commercial Buildings" data-sub="Abdali Boulevard · Eqtidar · FES — 3 projects">
       <span class="idx">01</span>
       <span class="nm">Commercial Buildings</span>
       <span class="meta">FIT-OUT · MEP</span>
       <span class="go" style="grid-column:4">↗</span>
     </div>
-    <div class="proj-item reveal" data-cursor-view data-img="https://images.unsplash.com/photo-1538333581680-29dd4752ddf2?auto=format&fit=crop&w=600&q=80"
-         data-fallback="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80"
-         data-title="Commercial Spaces" data-sub="Holiday Inn · Nespresso · My Gym — 7 projects">
+    <div class="proj-item reveal" data-cursor-view data-img="images/Commercial%20spaces/646dbc1c-51af-43ac-bd3b-68da2727dbaf.jpg"
+         data-fallback="images/Commercial%20spaces/494e9860-9fbb-4770-a7d4-698d0dec6cd2.jpg"
+         data-title="Commercial Spaces" data-sub="Holiday Inn · Nespresso · My Gym — 6 projects">
       <span class="idx">02</span>
       <span class="nm">Commercial Spaces</span>
       <span class="meta">FINISHING · MEP</span>
       <span class="go" style="grid-column:4">↗</span>
     </div>
-    <div class="proj-item reveal" data-cursor-view data-img="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80"
-         data-fallback="https://images.unsplash.com/photo-1538333581680-29dd4752ddf2?auto=format&fit=crop&w=600&q=80"
-         data-title="F&amp;B" data-sub="Little Italy · Wox &amp; Co. · 7 Barrels — 11 projects">
+    <div class="proj-item reveal" data-cursor-view data-img="images/FnB/cab02376-c633-4845-8250-a99c80290ce6.jpg"
+         data-fallback="images/FnB/43655625-641a-4279-8101-440d48197b08.jpg"
+         data-title="F&amp;B" data-sub="Little Italy · Wox &amp; Co. · 7 Barrels — 19 projects">
       <span class="idx">03</span>
       <span class="nm">F&amp;B</span>
       <span class="meta">DESIGN · FINISHING</span>
       <span class="go" style="grid-column:4">↗</span>
     </div>
-    <div class="proj-item reveal" data-cursor-view data-img="https://images.unsplash.com/photo-1693625700727-b548ca8f5679?auto=format&fit=crop&w=600&q=80"
-         data-fallback="https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=600&q=80"
+    <div class="proj-item reveal" data-cursor-view data-img="images/Offices/288da9bc-871e-4c83-9ed1-d4e2757229f1.jpg"
+         data-fallback="images/Offices/b436b4c8-35d3-40b3-9ddd-563f791075b3.jpg"
          data-title="Offices" data-sub="Ogilvy · Publicis · Etihad Rail — 12 projects">
       <span class="idx">04</span>
       <span class="nm">Offices</span>
       <span class="meta">DESIGN · FIT-OUT · MEP</span>
       <span class="go" style="grid-column:4">↗</span>
     </div>
-    <div class="proj-item reveal" data-cursor-view data-img="https://images.unsplash.com/photo-1718220216044-006f43e3a9b1?auto=format&fit=crop&w=600&q=80"
-         data-fallback="https://images.unsplash.com/photo-1705909773284-bcbbad9a4023?auto=format&fit=crop&w=600&q=80"
-         data-title="BPO Spaces" data-sub="Crystel · Oasis Communications — 7 projects">
+    <div class="proj-item reveal" data-cursor-view data-img="images/BPO/c4e2325e-0a78-4dcc-a574-6076bf7e33e8.jpg"
+         data-fallback="images/BPO/c94cf357-4af0-4660-a933-42080e9a2b84.jpg"
+         data-title="BPO Spaces" data-sub="Crystel · Oasis Communications — 10 projects">
       <span class="idx">05</span>
       <span class="nm">BPO Spaces</span>
       <span class="meta">DESIGN · FINISHING · MEP</span>
@@ -531,7 +538,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 
 <!-- ====== CTA BAND ====== -->
 <section class="cta-band" id="contact">
-  <div class="bg" data-parallax="0.12"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1920&q=80" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1716703373041-bd135107d947?auto=format&fit=crop&w=1920&q=80'" alt=""></div>
+  <div class="bg" data-parallax="0.12"><img src="images/extra%20photos/5d4d6d6a-5296-4a29-9751-e6a8528850b9.jpg" alt=""></div>
   <div class="wrap">
     <span class="eyebrow reveal" style="justify-content:center">Start a project</span>
     <h2 class="reveal">Have a space worth finishing properly?</h2>
@@ -746,6 +753,23 @@ if(!reduce){
   size();init();draw();addEventListener('resize',()=>{size();init();});
 }
 
+/* ===== HERO SLIDESHOW (cross-fade + slow Ken Burns zoom) ===== */
+(function(){
+  const slides=[...document.querySelectorAll('.hero-slide')];
+  if(!slides.length)return;
+  slides[0].classList.add('on');
+  if(reduce||slides.length<2){return;}
+  slides[0].classList.add('ken');
+  let i=0;
+  setInterval(()=>{
+    const cur=slides[i]; i=(i+1)%slides.length; const nxt=slides[i];
+    nxt.classList.remove('ken'); void nxt.offsetWidth; /* restart zoom */
+    nxt.classList.add('on','ken');
+    cur.classList.remove('on');
+    setTimeout(()=>cur.classList.remove('ken'),1800);
+  },6000);
+})();
+
 /* ===== PROJECT HOVER IMAGE ===== */
 if(fine){
   const hov=document.getElementById('projHover'),hovImg=document.getElementById('projHoverImg');
@@ -760,30 +784,83 @@ if(fine){
 }
 
 /* ===== LIGHTBOX GALLERY ===== */
-const GAL=[
-  '1767294273711-29306e032051','1706074797611-a02f9ed06439','1497366754035-f200968a6e72',
-  '1718220216044-006f43e3a9b1','1497366811353-6870744d04b2','1716703373041-bd135107d947',
-  '1693625700727-b548ca8f5679','1517502884422-41eaead166d4','1600508773950-d522f5bb7606',
-  '1587702068694-a909ef4aa346','1604328702728-d26d2062c20b','1705909773284-bcbbad9a4023',
-  '1517248135467-4c7edcad34c4','1538333581680-29dd4752ddf2','1667388969250-1c7220bf3f37',
-  '1729394405518-eaf2a0203aa7'
-];
+const GALLERIES={
+ "Commercial Buildings":[
+  "images/Commercial%20buildings/f6e6182a-78b8-4b93-86be-b5e916f61250.jpg",
+  "images/Commercial%20buildings/IMG-20161213-WA0022.jpg",
+  "images/Commercial%20buildings/the-boulevard-arjaan.jpg"
+ ],
+ "Commercial Spaces":[
+  "images/Commercial%20spaces/646dbc1c-51af-43ac-bd3b-68da2727dbaf.jpg",
+  "images/Commercial%20spaces/494e9860-9fbb-4770-a7d4-698d0dec6cd2.jpg",
+  "images/Commercial%20spaces/5d58f533-01f1-44fa-a6d4-82e7fa4874df.jpg",
+  "images/Commercial%20spaces/60c4654f-7c43-4e87-9146-3558b799bc24.jpg",
+  "images/Commercial%20spaces/8b81e218-7c48-44c1-9fce-e2c7f4a3c811.jpg",
+  "images/Commercial%20spaces/f7a0f5e9-aa05-44c2-8b9e-abb8393d972f.jpg"
+ ],
+ "F&B":[
+  "images/FnB/cab02376-c633-4845-8250-a99c80290ce6.jpg",
+  "images/FnB/0be8ca39-2e36-450a-a187-ccd437c409af.jpg",
+  "images/FnB/1ba4cb9a-6bb3-4d68-af03-ea5c4b9a1fe7.jpg",
+  "images/FnB/20190319_101936_resized.jpg",
+  "images/FnB/20190319_102006_resized.jpg",
+  "images/FnB/30491829-ffd9-4b2b-bdab-23c153f1547c.jpg",
+  "images/FnB/43655625-641a-4279-8101-440d48197b08.jpg",
+  "images/FnB/4c5ec11c-737f-4e95-8f81-26b7684d4f8c.jpg",
+  "images/FnB/59002486-c103-4c1c-ad2f-1638913d7d45.jpg",
+  "images/FnB/65fdc995-4c5a-469f-8d34-24c7669959c0.jpg",
+  "images/FnB/88ab3040-7335-4008-9543-61911c31d179.jpg",
+  "images/FnB/8e85570c-d4ac-4f38-a080-25164b7c578c.jpg",
+  "images/FnB/92fd05f7-cd3c-47aa-b793-d235f943f9b9.jpg",
+  "images/FnB/93327be9-8e5d-46c3-86be-39d5c5e01f4e.jpg",
+  "images/FnB/a8019436-7e42-4837-870b-f20456bd165a.jpg",
+  "images/FnB/be051a78-fb79-49b9-8291-cc082bd318ee.jpg",
+  "images/FnB/c39e7f9e-c56e-488f-870a-5ebc2b5dc7f1.jpg",
+  "images/FnB/c803a7c5-d47b-41b5-b5fb-4a746932246c.jpg",
+  "images/FnB/e833248f-d207-47c7-9d78-52cf21b5f11b.jpg"
+ ],
+ "Offices":[
+  "images/Offices/288da9bc-871e-4c83-9ed1-d4e2757229f1.jpg",
+  "images/Offices/0ee2bcb8-b8cd-4421-8e79-a4510c8732d8.jpg",
+  "images/Offices/1025f857-0184-4aaf-a70f-234c1f618e55.jpg",
+  "images/Offices/20200222_114526_resized.jpg",
+  "images/Offices/46517d05-5f4b-486c-94bb-6a0ff7461864.jpg",
+  "images/Offices/590df30f-43b6-4e58-b0ac-672ed75ecaa6.jpg",
+  "images/Offices/5b3db2c9-5eef-4d53-8285-3d2f9e113476.jpg",
+  "images/Offices/7e905792-f4ee-4979-913a-b722a83eb98e.jpg",
+  "images/Offices/b436b4c8-35d3-40b3-9ddd-563f791075b3.jpg",
+  "images/Offices/d7795fc4-c826-4d69-aae0-7fe603a18278.jpg",
+  "images/Offices/f735b312-2eab-4adc-91ef-5fb037cd22b6.jpg",
+  "images/Offices/fc7de2e9-0170-4133-870a-4fb832ef81d2.jpg"
+ ],
+ "BPO Spaces":[
+  "images/BPO/c4e2325e-0a78-4dcc-a574-6076bf7e33e8.jpg",
+  "images/BPO/237c643d-1c1d-441e-b6e1-20a0b1a63b5b.jpg",
+  "images/BPO/6a07f4b5-0a2b-4efe-83fb-1b827e9bc748%20%281%29.jpg",
+  "images/BPO/938f7b3c-ff45-4fef-906f-8789ac69dbe0.jpg",
+  "images/BPO/9ab767e4-3f85-43f3-9346-51066235bb09.jpg",
+  "images/BPO/baccb44e-1fab-405b-acd8-a0c020a52047.jpg",
+  "images/BPO/c84d87d6-8862-43c7-8a5b-7cbe86f033a0.jpg",
+  "images/BPO/c94cf357-4af0-4660-a933-42080e9a2b84.jpg",
+  "images/BPO/d873312c-ee16-4fc3-bd47-312671d9d011.jpg",
+  "images/BPO/ead1232d-2940-40ae-b1b9-3586977c5baa.jpg"
+ ]
+};
 const lb=document.getElementById('lb'),lbGrid=document.getElementById('lbGrid'),
       lbTitle=document.getElementById('lbTitle'),lbSub=document.getElementById('lbSub'),
       lbClose=document.getElementById('lbClose');
-document.querySelectorAll('.proj-item').forEach((item,i)=>{
+document.querySelectorAll('.proj-item').forEach((item)=>{
   item.addEventListener('click',()=>{
-    lbTitle.childNodes[0].nodeValue=item.dataset.title.replace('&amp;','&');
+    const title=item.dataset.title.replace('&amp;','&');
+    lbTitle.childNodes[0].nodeValue=title;
     lbSub.textContent=item.dataset.sub.replace('&amp;','&');
     lbGrid.innerHTML='';
-    for(let g=0;g<8;g++){
-      const id=GAL[(i*3+g)%GAL.length];
-      const url=`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=800&q=80`;
-      const fb=`https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=800&q=80`;
+    (GALLERIES[title]||[]).forEach(src=>{
       const f=document.createElement('figure');
-      f.innerHTML=`<img src="${url}" onerror="this.onerror=null;this.src='${fb}'" alt="">`;
-      lbGrid.appendChild(f);
-    }
+      const im=document.createElement('img');
+      im.loading='lazy';im.src=src;im.alt=title;
+      f.appendChild(im);lbGrid.appendChild(f);
+    });
     lb.classList.add('open');document.body.style.overflow='hidden';
   });
 });
