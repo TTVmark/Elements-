@@ -361,11 +361,22 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 @media (max-width:760px){.branches{grid-template-columns:1fr}.branch-row{flex-direction:column;gap:6px}}
 
 /* ---------- lightbox project list ---------- */
-.lb-note{color:var(--mute);font-size:.9rem;margin:-4px 0 18px;
-  max-height:24vh;overflow-y:auto;padding-right:6px}
-.lb-note ul{list-style:none;display:grid;gap:6px}
-.lb-note li{padding-left:15px;position:relative;line-height:1.5}
-.lb-note li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--navy-glow)}
+.lb-note{margin:-2px 0 24px}
+.lb-note ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(24px,4vw,52px)}
+.lb-note li{position:relative;padding:11px 0 11px 22px;border-top:1px solid var(--line);
+  font-size:.9rem;line-height:1.5;color:var(--paper)}
+.lb-note li::before{content:"";position:absolute;left:0;top:17px;width:6px;height:6px;
+  border-radius:50%;background:var(--navy-glow)}
+@media (max-width:700px){.lb-note ul{grid-template-columns:1fr}}
+
+/* sleek slim scrollbar for the gallery */
+.lb-grid{scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.lb-grid::-webkit-scrollbar{width:8px}
+.lb-grid::-webkit-scrollbar-track{background:transparent}
+.lb-grid::-webkit-scrollbar-thumb{background:var(--line);border-radius:20px;
+  border:2px solid transparent;background-clip:content-box}
+.lb-grid::-webkit-scrollbar-thumb:hover{background:var(--slate);background-clip:content-box}
 
 /* ---------- responsive ---------- */
 @media (max-width:980px){
