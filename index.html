@@ -81,8 +81,8 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 /* ---------- loader ---------- */
 .loader{position:fixed;inset:0;z-index:10000;background:var(--ink);
   display:grid;place-items:center;gap:34px}
-.loader .mono-logo{width:70px;height:84px}
-.loader .mono-logo rect{fill:#fff;transform-origin:left center;transform:scaleX(0)}
+.loader-logo{width:min(300px,64vw);opacity:0;animation:logoIn 1.1s var(--ease) .15s forwards}
+@keyframes logoIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .loader-bar{width:min(240px,55vw);height:1px;background:var(--line);position:relative;overflow:hidden}
 .loader-bar span{position:absolute;inset:0;width:0;background:var(--steel)}
 .loader-pct{font-family:var(--m);font-size:11px;letter-spacing:.3em;color:var(--mute)}
@@ -96,11 +96,8 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 .nav.scrolled{padding:14px var(--pad);background:rgba(10,12,15,.78);
   backdrop-filter:blur(14px);border-color:var(--line)}
 .brand{display:flex;align-items:center;gap:14px}
-.brand svg{width:24px;height:29px}
-.brand svg rect{fill:#fff}
-.brand .word{font-family:var(--d);font-weight:700;font-size:15px;letter-spacing:.04em;line-height:1}
-.brand .word i{font-family:Allura,cursive;font-style:normal;font-weight:400;
-  font-size:21px;color:var(--steel);margin-left:4px;letter-spacing:0}
+.brand img{height:34px;width:auto;display:block}
+.foot-brand .brand img{height:44px}
 .nav-links{display:flex;align-items:center;gap:38px}
 .nav-links a{font-size:13.5px;letter-spacing:.02em;color:var(--paper);position:relative;padding:4px 0}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;
@@ -421,12 +418,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 
 <!-- ====== LOADER ====== -->
 <div class="loader" id="loader">
-  <svg class="mono-logo" viewBox="0 0 100 120" aria-hidden="true">
-    <rect x="0" y="0" width="22" height="120" rx="6" data-bar="0"/>
-    <rect x="30" y="0" width="70" height="30" rx="6" data-bar="1"/>
-    <rect x="30" y="45" width="55" height="30" rx="6" data-bar="2"/>
-    <rect x="30" y="90" width="70" height="30" rx="6" data-bar="3"/>
-  </svg>
+  <img class="loader-logo" src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
   <div class="loader-bar"><span id="loaderFill"></span></div>
   <div class="loader-pct" id="loaderPct">00</div>
 </div>
@@ -434,13 +426,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 <!-- ====== NAV ====== -->
 <nav class="nav" id="nav">
   <a href="#top" class="brand" data-cursor>
-    <svg viewBox="0 0 100 120" aria-hidden="true">
-      <rect x="0" y="0" width="22" height="120" rx="6"/>
-      <rect x="30" y="0" width="70" height="30" rx="6"/>
-      <rect x="30" y="45" width="55" height="30" rx="6"/>
-      <rect x="30" y="90" width="70" height="30" rx="6"/>
-    </svg>
-    <span class="word">ELEMENTS<i>Interiors</i></span>
+    <img src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#about" class="active">About</a>
@@ -728,11 +714,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
     <div class="foot-top">
       <div class="foot-brand">
         <a href="#top" class="brand">
-          <svg viewBox="0 0 100 120" aria-hidden="true">
-            <rect x="0" y="0" width="22" height="120" rx="6"/><rect x="30" y="0" width="70" height="30" rx="6"/>
-            <rect x="30" y="45" width="55" height="30" rx="6"/><rect x="30" y="90" width="70" height="30" rx="6"/>
-          </svg>
-          <span class="word">ELEMENTS<i>Interiors</i></span>
+          <img src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
         </a>
         <p>Specialized in fine finishing works, electrical works, and mechanical works.
           Formed in 2009.</p>
