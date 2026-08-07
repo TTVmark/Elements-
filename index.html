@@ -86,15 +86,20 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 .loader-bar{width:min(240px,55vw);height:1px;background:var(--line);position:relative;overflow:hidden}
 .loader-bar span{position:absolute;inset:0;width:0;background:var(--steel)}
 .loader-pct{font-family:var(--m);font-size:11px;letter-spacing:.3em;color:var(--mute)}
-.loader.done{opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility .7s}
+.loader.done{transform:translateY(-101%);visibility:hidden;
+  transition:transform .9s cubic-bezier(.76,0,.24,1) .05s,visibility 0s 1s}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;top:0;left:0;width:100%;z-index:900;
   padding:22px var(--pad);display:flex;align-items:center;justify-content:space-between;
   transition:padding .4s var(--ease),background .4s var(--ease),border-color .4s var(--ease);
   border-bottom:1px solid transparent}
-.nav.scrolled{padding:14px var(--pad);background:rgba(10,12,15,.78);
-  backdrop-filter:blur(14px);border-color:var(--line)}
+.nav.scrolled{padding:14px var(--pad);background:rgba(10,12,15,.78);border-color:var(--line)}
+/* blur lives on a pseudo-layer: backdrop-filter on .nav itself would make the
+   fixed fullscreen mobile menu position against the nav bar instead of the viewport */
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;
+  backdrop-filter:blur(14px);opacity:0;transition:opacity .4s var(--ease)}
+.nav.scrolled::before{opacity:1}
 .brand{display:flex;align-items:center;gap:14px}
 .brand img{height:46px;width:auto;display:block}
 .foot-brand .brand img{height:58px}
@@ -165,8 +170,9 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 .btn:hover .arr{transform:translateX(5px)}
 
 /* ---------- reveal ---------- */
-.reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.reveal.in{opacity:1;transform:none}
+.reveal{opacity:0;transform:translateY(34px);filter:blur(10px);
+  transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.reveal.in{opacity:1;transform:none;filter:blur(0)}
 .stagger>*{opacity:0;transform:translateY(28px)}
 
 /* ---------- intro ---------- */
@@ -410,9 +416,20 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   .stats-grid{grid-template-columns:1fr 1fr}
   .foot-top{grid-template-columns:1fr}
 }
+/* ---------- wow-motion layer ---------- */
+.scroll-progress{position:fixed;top:0;left:0;width:100%;height:2px;z-index:960;
+  background:linear-gradient(90deg,var(--navy-glow),var(--steel));
+  transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.sw{display:inline-block;overflow:hidden;vertical-align:top}
+.sc{display:inline-block;will-change:transform}
+.hero h1 .ln .sw{display:inline-block;overflow:visible;transform:none}
+.hero h1 .ln .sc{display:inline-block;transform:none}
+.eyebrow::before{transform:scaleX(1);transform-origin:left;transition:transform 1.1s var(--ease) .15s}
+.eyebrow.reveal:not(.in)::before{transform:scaleX(0)}
+
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto}
-  .reveal,.stagger>*,.hero h1 .ln span{opacity:1!important;transform:none!important}
+  .reveal,.stagger>*,.hero h1 .ln span{opacity:1!important;transform:none!important;filter:none!important}
 }
 </style>
 </head>
@@ -784,8 +801,9 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   <button class="znav znext" id="zNext" aria-label="Next image">›</button>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/lenis.min.js"></script>
 <script>
 const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
@@ -1113,6 +1131,167 @@ document.querySelectorAll('.faq-item').forEach(it=>{
     else{it.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
   });
 });
+</script>
+<script>
+/* ===== WOW MOTION LAYER — animations only, content untouched ===== */
+(function(){
+  const GS = typeof gsap!=='undefined' && typeof ScrollTrigger!=='undefined';
+  if(reduce || !GS) return;   /* graceful fallback: original reveals still run */
+
+  /* ---- scroll progress hairline ---- */
+  const prog=document.createElement('div');prog.className='scroll-progress';
+  document.body.appendChild(prog);
+  gsap.to(prog,{scaleX:1,ease:'none',scrollTrigger:{start:0,end:'max',scrub:.3}});
+
+  /* ---- smart nav: slips away scrolling down, returns scrolling up ----
+     (animates top, not transform — a transformed fixed nav would break the
+      mobile fullscreen menu, which is position:fixed inside it) ---- */
+  let lastY=scrollY,navHidden=false;
+  addEventListener('scroll',()=>{
+    const y=scrollY;
+    if(y>360 && y>lastY+2 && !navHidden && !navLinks.classList.contains('open')){
+      navHidden=true;gsap.to(nav,{top:-110,duration:.55,ease:'power3.out',overwrite:'auto'});
+    }else if(navHidden && (y<lastY-2 || y<=360)){
+      navHidden=false;gsap.to(nav,{top:0,duration:.55,ease:'power3.out',overwrite:'auto'});
+    }
+    lastY=y;
+  },{passive:true});
+  burger.addEventListener('click',()=>{gsap.killTweensOf(nav);gsap.set(nav,{top:0});navHidden=false;});
+
+  /* ---- char splitter (text is rebuilt verbatim; aria-label preserves it) ---- */
+  function splitChars(el){
+    const text=el.textContent;
+    el.setAttribute('aria-label',text);
+    el.textContent='';
+    text.split(/(\s+)/).forEach(part=>{
+      if(!part)return;
+      if(/^\s+$/.test(part)){el.appendChild(document.createTextNode(' '));return;}
+      const w=document.createElement('span');w.className='sw';w.setAttribute('aria-hidden','true');
+      [...part].forEach(ch=>{const c=document.createElement('span');c.className='sc';c.textContent=ch;w.appendChild(c);});
+      el.appendChild(w);
+    });
+    return el.querySelectorAll('.sc');
+  }
+
+  /* ---- hero: char-cascade headline, video zoom, nav drop-in ---- */
+  document.querySelectorAll('.hero h1 .ln > span').forEach(splitChars);
+  heroIntro=function(){
+    gsap.set('.hero h1 .ln > span',{y:0});
+    const t=gsap.timeline();
+    t.from('.hero h1 .sc',{yPercent:130,rotate:7,stagger:.026,duration:1.3,ease:'expo.out'},.15)
+     .from('.hero .eyebrow',{y:20,opacity:0,duration:.8,ease:'power3.out'},.35)
+     .to('.hero .lead, .hero-row',{opacity:1,y:0,duration:.9,stagger:.1,ease:'power3.out'},.65)
+     .from('.hero-video',{scale:1.22,duration:3,ease:'expo.out'},0)
+     .from('.nav',{y:-56,opacity:0,duration:1,ease:'power3.out',clearProps:'all'},.4);
+    document.querySelectorAll('.hero .lead,.hero-row').forEach(e=>{e.classList.remove('reveal');e.style.opacity=0;e.style.transform='translateY(20px)';});
+    document.querySelector('.hero .eyebrow').classList.remove('reveal');
+  };
+
+  /* hero exit scrub — content drifts up and fades, media pushes in */
+  gsap.to('.hero-inner',{yPercent:-16,opacity:0,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'88% top',scrub:true}});
+  gsap.to('.hero-media',{scale:1.12,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.scroll-cue',{opacity:0,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'30% top',scrub:true}});
+
+  /* ---- section headlines: masked char reveals on scroll ---- */
+  document.querySelectorAll('#about h2, #services h2, #projects .proj-head h2, #faq h2, #contact h2').forEach(h=>{
+    h.classList.remove('reveal');
+    const chars=splitChars(h);
+    gsap.from(chars,{yPercent:120,rotate:5,stagger:.02,duration:1.1,ease:'expo.out',
+      scrollTrigger:{trigger:h,start:'top 88%',once:true},
+      onComplete:()=>h.querySelectorAll('.sw').forEach(w=>w.style.overflow='visible')});
+  });
+
+  /* ---- intro image: curtain wipe + settle ---- */
+  const im=document.querySelector('.intro-media');
+  if(im){
+    im.classList.remove('reveal');
+    const img=im.querySelector('img');
+    gsap.set(im,{clipPath:'inset(0 0 100% 0)'});
+    gsap.set(img,{scale:1.3});
+    ScrollTrigger.create({trigger:im,start:'top 82%',once:true,onEnter:()=>{
+      gsap.to(im,{clipPath:'inset(0 0 0% 0)',duration:1.5,ease:'expo.inOut'});
+      gsap.to(img,{scale:1,duration:2.1,ease:'expo.out',delay:.15});
+    }});
+  }
+
+  /* ---- project cards: clip-rise cascade, then live 3D tilt ---- */
+  const cards=gsap.utils.toArray('.proj-card');
+  if(cards.length){
+    cards.forEach(c=>c.classList.remove('reveal'));
+    gsap.set(cards,{opacity:0,y:70,clipPath:'inset(10% 10% 10% 10%)'});
+    gsap.set('.proj-card img',{scale:1.26});
+    ScrollTrigger.batch(cards,{start:'top 88%',once:true,onEnter:batch=>{
+      gsap.to(batch,{opacity:1,y:0,clipPath:'inset(0% 0% 0% 0%)',duration:1.15,stagger:.1,ease:'expo.out'});
+      gsap.to(batch.map(b=>b.querySelector('img')),{scale:1,duration:1.7,stagger:.1,ease:'expo.out',
+        onComplete:()=>batch.forEach(b=>gsap.set(b.querySelector('img'),{clearProps:'transform'}))});
+    }});
+    if(fine){
+      cards.forEach(card=>{
+        gsap.set(card,{transformPerspective:800});
+        const rx=gsap.quickTo(card,'rotationX',{duration:.7,ease:'power3.out'});
+        const ry=gsap.quickTo(card,'rotationY',{duration:.7,ease:'power3.out'});
+        card.addEventListener('mousemove',e=>{
+          const r=card.getBoundingClientRect();
+          ry(((e.clientX-r.left)/r.width-.5)*9);
+          rx(-((e.clientY-r.top)/r.height-.5)*7);
+        });
+        card.addEventListener('mouseleave',()=>{rx(0);ry(0);});
+      });
+    }
+  }
+
+  /* ---- grid cascades: ethos / services / specialization / stats / footer ---- */
+  document.querySelectorAll('.ethos-grid,.cap-grid,.spec-grid,.stats-grid,.foot-top').forEach(grid=>{
+    const kids=gsap.utils.toArray(grid.children);
+    if(!kids.length)return;
+    kids.forEach(k=>k.classList.remove('reveal'));
+    gsap.set(kids,{opacity:0,y:54});
+    ScrollTrigger.create({trigger:grid,start:'top 90%',once:true,onEnter:()=>
+      gsap.to(kids,{opacity:1,y:0,duration:1.05,stagger:.09,ease:'power3.out',clearProps:'opacity,transform'})});
+  });
+
+  /* ---- FAQ rows cascade ---- */
+  const faqList=document.querySelector('.faq-list');
+  if(faqList){
+    faqList.classList.remove('reveal');
+    const rows=gsap.utils.toArray('.faq-item');
+    gsap.set(rows,{opacity:0,x:-36});
+    ScrollTrigger.create({trigger:faqList,start:'top 88%',once:true,onEnter:()=>
+      gsap.to(rows,{opacity:1,x:0,duration:.9,stagger:.07,ease:'power3.out',clearProps:'opacity,transform'})});
+  }
+
+  /* ---- footer bottom line ---- */
+  const fb=document.querySelector('.foot-bottom');
+  if(fb) gsap.from(fb,{opacity:0,y:24,duration:1,ease:'power3.out',
+    scrollTrigger:{trigger:fb,start:'top 98%',once:true}});
+
+  /* ---- buttery smooth scrolling (Lenis) ---- */
+  if(typeof Lenis!=='undefined'){
+    const lenis=new Lenis({duration:1.1,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+    document.documentElement.style.scrollBehavior='auto';
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(t=>lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    /* anchors ride the smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const sel=a.getAttribute('href');
+        if(sel.length<2)return;
+        const target=document.querySelector(sel);
+        if(!target)return;
+        e.preventDefault();
+        lenis.scrollTo(target,{duration:1.4});
+      });
+    });
+    /* pause while the lightbox locks the page */
+    new MutationObserver(()=>{
+      document.body.style.overflow==='hidden'?lenis.stop():lenis.start();
+    }).observe(document.body,{attributes:true,attributeFilter:['style']});
+  }
+})();
 </script>
 </body>
 </html>
