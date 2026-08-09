@@ -332,6 +332,21 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 .ethos-text p{color:var(--mute);font-size:.96rem;margin-bottom:12px}
 .ethos-text p:last-child{margin-bottom:0}
 
+
+/* ---------- clients / logos ---------- */
+.logo-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:clamp(34px,4.5vw,60px) clamp(24px,3vw,48px);margin-top:clamp(40px,5.5vw,68px);
+  align-items:center;justify-items:center}
+.logo-cell{display:flex;align-items:center;justify-content:center;width:100%;
+  height:clamp(56px,6.5vw,92px)}
+.logo-cell img{max-width:min(100%,190px);max-height:100%;width:auto;height:auto;object-fit:contain;
+  filter:grayscale(1) drop-shadow(0 0 14px rgba(255,255,255,.14));opacity:.55;
+  transition:filter 1.2s var(--ease) .35s,opacity 1.2s var(--ease) .35s,transform .5s var(--ease)}
+.reveal.in .logo-cell img{filter:grayscale(0) drop-shadow(0 0 14px rgba(255,255,255,.14));opacity:1}
+.logo-cell:hover img{transform:scale(1.08)}
+@media (max-width:900px){.logo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 /* ---------- faq accordion ---------- */
 .faq-list{border-top:1px solid var(--line);margin-top:clamp(30px,4vw,50px)}
 .faq-item{border-bottom:1px solid var(--line)}
@@ -631,6 +646,39 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
       <span class="count">10 photos</span>
       <span class="cap"><span><span class="idx">05</span><span class="nm">BPO Spaces</span><span class="meta">DESIGN · FINISHING · MEP</span></span></span>
     </button>
+  </div>
+</section>
+
+<!-- ====== CLIENTS ====== -->
+<section class="pad-y wrap" id="clients">
+  <span class="eyebrow reveal">Clients</span>
+  <h2 class="reveal" style="font-size:clamp(1.9rem,4.5vw,3.2rem);margin-top:18px">Trusted By</h2>
+  <div class="logo-grid reveal">
+    <div class="logo-cell"><img src="logos/web/Apco.png" loading="lazy" alt="Apco" /></div>
+    <div class="logo-cell"><img src="logos/web/Boulevard.png" loading="lazy" alt="Boulevard" /></div>
+    <div class="logo-cell"><img src="logos/web/Crystel.png" loading="lazy" alt="Crystel" /></div>
+    <div class="logo-cell"><img src="logos/web/ER.png" loading="lazy" alt="Er" /></div>
+    <div class="logo-cell"><img src="logos/web/FCC.png" loading="lazy" alt="Fcc" /></div>
+    <div class="logo-cell"><img src="logos/web/Fig%20tree.png" loading="lazy" alt="Fig Tree" /></div>
+    <div class="logo-cell"><img src="logos/web/Free%20the%20fork.png" loading="lazy" alt="Free The Fork" /></div>
+    <div class="logo-cell"><img src="logos/web/Friedrich%20Ebert%20Foundation.png" loading="lazy" alt="Friedrich Ebert Foundation" /></div>
+    <div class="logo-cell"><img src="logos/web/Future%20steel.png" loading="lazy" alt="Future Steel" /></div>
+    <div class="logo-cell"><img src="logos/web/Fyxx.png" loading="lazy" alt="Fyxx" /></div>
+    <div class="logo-cell"><img src="logos/web/Habayeb.png" loading="lazy" alt="Habayeb" /></div>
+    <div class="logo-cell"><img src="logos/web/Hanin.png" loading="lazy" alt="Hanin" /></div>
+    <div class="logo-cell"><img src="logos/web/Holiday%20Inn.png" loading="lazy" alt="Holiday Inn" /></div>
+    <div class="logo-cell"><img src="logos/web/Little%20italy.png" loading="lazy" alt="Little Italy" /></div>
+    <div class="logo-cell"><img src="logos/web/Majnoon.png" loading="lazy" alt="Majnoon" /></div>
+    <div class="logo-cell"><img src="logos/web/Malev%20Airlines.png" loading="lazy" alt="Malev Airlines" /></div>
+    <div class="logo-cell"><img src="logos/web/My%20gym.png" loading="lazy" alt="My Gym" /></div>
+    <div class="logo-cell"><img src="logos/web/Nespresso.png" loading="lazy" alt="Nespresso" /></div>
+    <div class="logo-cell"><img src="logos/web/Nicc.png" loading="lazy" alt="Nicc" /></div>
+    <div class="logo-cell"><img src="logos/web/Odyssey.png" loading="lazy" alt="Odyssey" /></div>
+    <div class="logo-cell"><img src="logos/web/Ogilvy.png" loading="lazy" alt="Ogilvy" /></div>
+    <div class="logo-cell"><img src="logos/web/Publicis.png" loading="lazy" alt="Publicis" /></div>
+    <div class="logo-cell"><img src="logos/web/Rajehi.png" loading="lazy" alt="Rajehi" /></div>
+    <div class="logo-cell"><img src="logos/web/Teleperformance.png" loading="lazy" alt="Teleperformance" /></div>
+    <div class="logo-cell"><img src="logos/web/Wox.png" loading="lazy" alt="Wox" /></div>
   </div>
 </section>
 
