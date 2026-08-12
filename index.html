@@ -79,13 +79,13 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 @media (hover:none),(pointer:coarse){.cursor,.cursor-ring{display:none!important}}
 
 /* ---------- loader ---------- */
-.loader{position:fixed;inset:0;z-index:10000;background:var(--ink);
+.loader{position:fixed;inset:0;z-index:10000;background:#0C0E11;
   display:grid;place-items:center;gap:34px}
 .loader-logo{width:min(300px,64vw);opacity:0;animation:logoIn 1.1s var(--ease) .15s forwards}
 @keyframes logoIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .loader-bar{width:min(240px,55vw);height:1px;background:var(--line);position:relative;overflow:hidden}
 .loader-bar span{position:absolute;inset:0;width:0;background:var(--steel)}
-.loader-pct{font-family:var(--m);font-size:11px;letter-spacing:.3em;color:var(--mute)}
+.loader-pct{font-family:var(--m);font-size:11px;letter-spacing:.3em;color:#8A919C}
 .loader.done{opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility .7s}
 
 /* ---------- nav ---------- */
@@ -444,7 +444,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 
 <!-- ====== LOADER ====== -->
 <div class="loader" id="loader">
-  <img class="loader-logo" src="images/logo/Elements%20Logo%20Black.png" alt="Elements Interiors" />
+  <img class="loader-logo" src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
   <div class="loader-bar"><span id="loaderFill"></span></div>
   <div class="loader-pct" id="loaderPct">00</div>
 </div>
@@ -452,7 +452,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 <!-- ====== NAV ====== -->
 <nav class="nav" id="nav">
   <a href="#top" class="brand" data-cursor>
-    <img src="images/logo/Elements%20Logo%20Black.png" alt="Elements Interiors" />
+    <img src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#about" class="active">About</a>
@@ -776,7 +776,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
     <div class="foot-top">
       <div class="foot-brand">
         <a href="#top" class="brand">
-          <img src="images/logo/Elements%20Logo%20Black.png" alt="Elements Interiors" />
+          <img src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
         </a>
         <p>Specialized in fine finishing works, electrical works, and mechanical works.
           Formed in 2009.</p>
