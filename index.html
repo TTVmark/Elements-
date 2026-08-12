@@ -12,16 +12,16 @@
 
 <style>
 :root{
-  --ink:#0C0E11;
-  --ink-2:#101317;
-  --ink-3:#161A20;
+  --ink:#928E85;
+  --ink-2:#8A867D;
+  --ink-3:#827E75;
   --slate:#4C515A;
-  --line:#23282F;
+  --line:#7C786F;
   --navy:#163D63;
   --navy-glow:#2E72B0;
   --steel:#7FA6C9;
-  --paper:#ECEAE5;
-  --mute:#8A919C;
+  --paper:#1D1B17;
+  --mute:#403D37;
   --white:#FFFFFF;
 
   --d:Bricolage Grotesque, sans-serif;
@@ -93,7 +93,7 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   padding:22px var(--pad);display:flex;align-items:center;justify-content:space-between;
   transition:padding .4s var(--ease),background .4s var(--ease),border-color .4s var(--ease);
   border-bottom:1px solid transparent}
-.nav.scrolled{padding:14px var(--pad);background:rgba(10,12,15,.78);
+.nav.scrolled{padding:14px var(--pad);background:rgba(146,142,133,.82);
   backdrop-filter:blur(14px);border-color:var(--line)}
 .brand{display:flex;align-items:center;gap:14px}
 .brand img{height:46px;width:auto;display:block}
@@ -104,14 +104,15 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   background:var(--steel);transition:width .4s var(--ease)}
 .nav-links a:hover::after,.nav-links a.active::after{width:100%}
 .nav-cta{font-family:var(--b);font-size:13px;font-weight:500;letter-spacing:.02em;
-  padding:11px 22px;border:1px solid var(--steel);border-radius:40px;color:#fff;
+  padding:11px 22px;border:1px solid var(--navy);border-radius:40px;color:var(--paper);
   position:relative;overflow:hidden;transition:color .4s}
 .nav-cta span{position:relative;z-index:2}
 .nav-cta::before{content:"";position:absolute;inset:0;background:var(--navy);
   transform:translateY(101%);transition:transform .45s var(--ease);z-index:1}
 .nav-cta:hover::before{transform:translateY(0)}
+.nav-cta:hover{color:#fff}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
-.burger span{width:24px;height:1.5px;background:#fff;transition:.3s var(--ease)}
+.burger span{width:24px;height:1.5px;background:var(--paper);transition:.3s var(--ease)}
 
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;overflow:hidden;
@@ -124,13 +125,13 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 .hero-slide.on{opacity:1}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   filter:grayscale(.4) contrast(1.05)}
-.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.hero-overlay{position:absolute;inset:0;background:rgba(0,0,0,.22)}
 .hero-slide.ken{animation:heroKen 8.2s ease-out forwards}
 @keyframes heroKen{from{transform:scale(1.06)}to{transform:scale(1.17)}}
 .hero-media::after{content:"";position:absolute;inset:0;
   background:
-    linear-gradient(180deg,rgba(10,12,15,.55) 0%,rgba(10,12,15,.2) 35%,rgba(10,12,15,.95) 100%),
-    radial-gradient(120% 90% at 80% 10%,rgba(22,61,99,.55),transparent 60%);
+    linear-gradient(180deg,rgba(146,142,133,.72) 0%,rgba(146,142,133,.18) 35%,rgba(146,142,133,.97) 100%),
+    radial-gradient(120% 90% at 80% 10%,rgba(22,61,99,.35),transparent 60%);
   mix-blend-mode:normal}
 .hero canvas{position:absolute;inset:0;z-index:1;opacity:.5}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
@@ -222,13 +223,13 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   transition:background .5s var(--ease)}
 .proj-card:hover img{transform:scale(1.06);filter:grayscale(0) contrast(1.05)}
 .proj-card:focus-visible{outline:2px solid var(--navy-glow);outline-offset:2px}
-.proj-card .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;
+.proj-card .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#ECEAE5;
   padding:clamp(12px,1.3vw,17px) clamp(14px,1.5vw,20px);
   display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
 .proj-card .idx{font-family:var(--m);font-size:11px;color:var(--steel);display:inline;margin-right:10px}
 .proj-card .nm{font-family:var(--d);font-weight:600;font-size:clamp(1.15rem,1.7vw,1.5rem);
   line-height:1.05;display:inline}
-.proj-card .meta{font-family:var(--m);font-size:10.5px;letter-spacing:.05em;color:var(--mute);
+.proj-card .meta{font-family:var(--m);font-size:10.5px;letter-spacing:.05em;color:rgba(236,234,229,.72);
   display:block;margin-top:5px}
 /* badge pinned top-right, clear of the bottom caption */
 .proj-card .count{position:absolute;top:14px;right:14px;z-index:3;
@@ -250,7 +251,7 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 .cap-cell p{color:var(--mute);font-size:.94rem}
 
 /* ---------- cta band ---------- */
-.cta-band{position:relative;overflow:hidden;text-align:center;isolation:isolate;
+.cta-band{position:relative;overflow:hidden;text-align:center;isolation:isolate;color:#ECEAE5;
   padding-block:clamp(90px,14vw,170px)}
 .cta-band .bg{position:absolute;inset:0;z-index:0}
 .cta-band .bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.5) brightness(.4)}
@@ -258,7 +259,7 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   background:radial-gradient(100% 100% at 50% 50%,rgba(22,61,99,.6),rgba(10,12,15,.92))}
 .cta-band .wrap{position:relative;z-index:1}
 .cta-band h2{font-size:clamp(2.2rem,6vw,4.6rem);max-width:18ch;margin:18px auto 30px}
-.cta-band .lead{margin:0 auto 42px;text-align:center}
+.cta-band .lead{margin:0 auto 42px;text-align:center;color:rgba(236,234,229,.75)}
 
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
@@ -277,7 +278,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 .foot-bottom a{color:var(--steel)}
 
 /* ---------- gallery / lightbox ---------- */
-.lb{position:fixed;inset:0;z-index:9990;background:rgba(8,9,11,.96);backdrop-filter:blur(8px);
+.lb{position:fixed;inset:0;z-index:9990;background:rgba(8,9,11,.96);backdrop-filter:blur(8px);color:#ECEAE5;
   display:none;flex-direction:column;padding:clamp(20px,4vw,50px)}
 .lb.open{display:flex}
 .lb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
@@ -338,12 +339,16 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   gap:clamp(34px,4.5vw,60px) clamp(24px,3vw,48px);margin-top:clamp(40px,5.5vw,68px);
   align-items:center;justify-items:center}
 .logo-cell{display:flex;align-items:center;justify-content:center;width:100%;
-  height:clamp(56px,6.5vw,92px)}
-.logo-cell img{max-width:min(100%,190px);max-height:100%;width:auto;height:auto;object-fit:contain;
-  filter:grayscale(1) drop-shadow(0 0 14px rgba(255,255,255,.14));opacity:.55;
+  height:clamp(84px,8.5vw,116px);background:#fff;border-radius:14px;
+  padding:16px 20px;border:1px solid rgba(0,0,0,.1);
+  box-shadow:0 14px 34px -22px rgba(0,0,0,.5);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.logo-cell:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(0,0,0,.55)}
+.logo-cell img{max-width:min(100%,170px);max-height:100%;width:auto;height:auto;object-fit:contain;
+  filter:grayscale(1);opacity:.75;
   transition:filter 1.2s var(--ease) .35s,opacity 1.2s var(--ease) .35s,transform .5s var(--ease)}
-.reveal.in .logo-cell img{filter:grayscale(0) drop-shadow(0 0 14px rgba(255,255,255,.14));opacity:1}
-.logo-cell:hover img{transform:scale(1.08)}
+.reveal.in .logo-cell img{filter:grayscale(0);opacity:1}
+.logo-cell:hover img{transform:scale(1.05)}
 @media (max-width:900px){.logo-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){.logo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -381,8 +386,8 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 .lb-note{margin:-4px 0 18px}
 .lb-note ul{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:0 clamp(20px,3vw,40px)}
-.lb-note li{position:relative;padding:6px 0 6px 18px;border-top:1px solid var(--line);
-  font-size:.82rem;line-height:1.45;color:var(--paper)}
+.lb-note li{position:relative;padding:6px 0 6px 18px;border-top:1px solid rgba(236,234,229,.2);
+  font-size:.82rem;line-height:1.45;color:#ECEAE5}
 .lb-note li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:5px;
   border-radius:50%;background:var(--navy-glow)}
 @media (max-width:1100px){.lb-note ul{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -439,7 +444,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 
 <!-- ====== LOADER ====== -->
 <div class="loader" id="loader">
-  <img class="loader-logo" src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
+  <img class="loader-logo" src="images/logo/Elements%20Logo%20Black.png" alt="Elements Interiors" />
   <div class="loader-bar"><span id="loaderFill"></span></div>
   <div class="loader-pct" id="loaderPct">00</div>
 </div>
@@ -447,7 +452,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 <!-- ====== NAV ====== -->
 <nav class="nav" id="nav">
   <a href="#top" class="brand" data-cursor>
-    <img src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
+    <img src="images/logo/Elements%20Logo%20Black.png" alt="Elements Interiors" />
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#about" class="active">About</a>
@@ -654,31 +659,31 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   <span class="eyebrow reveal">Clients</span>
   <h2 class="reveal" style="font-size:clamp(1.9rem,4.5vw,3.2rem);margin-top:18px">Trusted By</h2>
   <div class="logo-grid reveal">
-    <div class="logo-cell"><img src="logos/web/Apco.png" loading="lazy" alt="Apco" /></div>
-    <div class="logo-cell"><img src="logos/web/Boulevard.png" loading="lazy" alt="Boulevard" /></div>
-    <div class="logo-cell"><img src="logos/web/Crystel.png" loading="lazy" alt="Crystel" /></div>
-    <div class="logo-cell"><img src="logos/web/ER.png" loading="lazy" alt="Er" /></div>
-    <div class="logo-cell"><img src="logos/web/FCC.png" loading="lazy" alt="Fcc" /></div>
-    <div class="logo-cell"><img src="logos/web/Fig%20tree.png" loading="lazy" alt="Fig Tree" /></div>
-    <div class="logo-cell"><img src="logos/web/Free%20the%20fork.png" loading="lazy" alt="Free The Fork" /></div>
-    <div class="logo-cell"><img src="logos/web/Friedrich%20Ebert%20Foundation.png" loading="lazy" alt="Friedrich Ebert Foundation" /></div>
-    <div class="logo-cell"><img src="logos/web/Future%20steel.png" loading="lazy" alt="Future Steel" /></div>
-    <div class="logo-cell"><img src="logos/web/Fyxx.png" loading="lazy" alt="Fyxx" /></div>
-    <div class="logo-cell"><img src="logos/web/Habayeb.png" loading="lazy" alt="Habayeb" /></div>
-    <div class="logo-cell"><img src="logos/web/Hanin.png" loading="lazy" alt="Hanin" /></div>
-    <div class="logo-cell"><img src="logos/web/Holiday%20Inn.png" loading="lazy" alt="Holiday Inn" /></div>
-    <div class="logo-cell"><img src="logos/web/Little%20italy.png" loading="lazy" alt="Little Italy" /></div>
-    <div class="logo-cell"><img src="logos/web/Majnoon.png" loading="lazy" alt="Majnoon" /></div>
-    <div class="logo-cell"><img src="logos/web/Malev%20Airlines.png" loading="lazy" alt="Malev Airlines" /></div>
-    <div class="logo-cell"><img src="logos/web/My%20gym.png" loading="lazy" alt="My Gym" /></div>
-    <div class="logo-cell"><img src="logos/web/Nespresso.png" loading="lazy" alt="Nespresso" /></div>
-    <div class="logo-cell"><img src="logos/web/Nicc.png" loading="lazy" alt="Nicc" /></div>
-    <div class="logo-cell"><img src="logos/web/Odyssey.png" loading="lazy" alt="Odyssey" /></div>
-    <div class="logo-cell"><img src="logos/web/Ogilvy.png" loading="lazy" alt="Ogilvy" /></div>
-    <div class="logo-cell"><img src="logos/web/Publicis.png" loading="lazy" alt="Publicis" /></div>
-    <div class="logo-cell"><img src="logos/web/Rajehi.png" loading="lazy" alt="Rajehi" /></div>
-    <div class="logo-cell"><img src="logos/web/Teleperformance.png" loading="lazy" alt="Teleperformance" /></div>
-    <div class="logo-cell"><img src="logos/web/Wox.png" loading="lazy" alt="Wox" /></div>
+    <div class="logo-cell"><img src="logos/Apco.webp" loading="lazy" alt="Apco" /></div>
+    <div class="logo-cell"><img src="logos/Boulevard.jpg" loading="lazy" alt="Boulevard" /></div>
+    <div class="logo-cell"><img src="logos/Crystel.png" loading="lazy" alt="Crystel" /></div>
+    <div class="logo-cell"><img src="logos/ER.jpeg" loading="lazy" alt="Er" /></div>
+    <div class="logo-cell"><img src="logos/FCC.jpeg" loading="lazy" alt="Fcc" /></div>
+    <div class="logo-cell"><img src="logos/Fig%20tree.png" loading="lazy" alt="Fig Tree" /></div>
+    <div class="logo-cell"><img src="logos/Free%20the%20fork.webp" loading="lazy" alt="Free The Fork" /></div>
+    <div class="logo-cell"><img src="logos/Friedrich%20Ebert%20Foundation.png" loading="lazy" alt="Friedrich Ebert Foundation" /></div>
+    <div class="logo-cell"><img src="logos/Future%20steel.jpeg" loading="lazy" alt="Future Steel" /></div>
+    <div class="logo-cell"><img src="logos/Fyxx.webp" loading="lazy" alt="Fyxx" /></div>
+    <div class="logo-cell"><img src="logos/Habayeb.jpeg" loading="lazy" alt="Habayeb" /></div>
+    <div class="logo-cell"><img src="logos/Hanin.jpg" loading="lazy" alt="Hanin" /></div>
+    <div class="logo-cell"><img src="logos/Holiday%20Inn.jpeg" loading="lazy" alt="Holiday Inn" /></div>
+    <div class="logo-cell"><img src="logos/Little%20italy.png" loading="lazy" alt="Little Italy" /></div>
+    <div class="logo-cell"><img src="logos/Majnoon.webp" loading="lazy" alt="Majnoon" /></div>
+    <div class="logo-cell"><img src="logos/Malev%20Airlines.png" loading="lazy" alt="Malev Airlines" /></div>
+    <div class="logo-cell"><img src="logos/My%20gym.jpg" loading="lazy" alt="My Gym" /></div>
+    <div class="logo-cell"><img src="logos/Nespresso.png" loading="lazy" alt="Nespresso" /></div>
+    <div class="logo-cell"><img src="logos/Nicc.png" loading="lazy" alt="Nicc" /></div>
+    <div class="logo-cell"><img src="logos/Odyssey.png" loading="lazy" alt="Odyssey" /></div>
+    <div class="logo-cell"><img src="logos/Ogilvy.jpeg" loading="lazy" alt="Ogilvy" /></div>
+    <div class="logo-cell"><img src="logos/Publicis.png" loading="lazy" alt="Publicis" /></div>
+    <div class="logo-cell"><img src="logos/Rajehi.png" loading="lazy" alt="Rajehi" /></div>
+    <div class="logo-cell"><img src="logos/Teleperformance.png" loading="lazy" alt="Teleperformance" /></div>
+    <div class="logo-cell"><img src="logos/Wox.jpeg" loading="lazy" alt="Wox" /></div>
   </div>
 </section>
 
@@ -771,7 +776,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
     <div class="foot-top">
       <div class="foot-brand">
         <a href="#top" class="brand">
-          <img src="images/logo/elements-logo-white.png" alt="Elements Interiors" />
+          <img src="images/logo/Elements%20Logo%20Black.png" alt="Elements Interiors" />
         </a>
         <p>Specialized in fine finishing works, electrical works, and mechanical works.
           Formed in 2009.</p>
