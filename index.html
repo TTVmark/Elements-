@@ -1208,6 +1208,22 @@ addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')step(1);
 });
 
+/* ===== EMAIL LINKS =====
+   Desktop keeps the Gmail web compose tab; on phones/tablets we fall back to
+   mailto: so the OS shows its own "open with" app chooser (Gmail, Outlook, Mail…). */
+(function(){
+  const touch = window.matchMedia('(hover:none) and (pointer:coarse)').matches;
+  if(!touch) return;
+  document.querySelectorAll('a[href*="mail.google.com"]').forEach(a=>{
+    const m = decodeURIComponent(a.getAttribute('href')).match(/mailto:([^&\s]+)/i);
+    const addr = m ? m[1] : a.textContent.trim();
+    if(!/@/.test(addr)) return;
+    a.setAttribute('href','mailto:'+addr);
+    a.removeAttribute('target');
+    a.removeAttribute('rel');
+  });
+})();
+
 /* ===== FAQ ACCORDION ===== */
 document.querySelectorAll('.faq-item').forEach(it=>{
   const q=it.querySelector('.faq-q'), a=it.querySelector('.faq-a');
