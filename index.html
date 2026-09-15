@@ -64,6 +64,10 @@ h1,h2,h3,h4{font-family:var(--d);font-weight:600;line-height:1.02;letter-spacing
 /* hero sits on dark video: use a bright blue that stays legible */
 .hero .eyebrow{color:var(--navy-on-dark);text-shadow:0 1px 10px rgba(0,0,0,.65)}
 .hero .eyebrow::before{background:var(--navy-on-dark);opacity:.85}
+/* long hero eyebrow: let it wrap instead of overflowing on narrow screens */
+.hero .eyebrow{flex-wrap:wrap;max-width:100%}
+@media (max-width:620px){.hero .eyebrow{font-size:10px;letter-spacing:.2em;gap:10px}
+  .hero .eyebrow::before{width:24px}}
 .display{font-size:clamp(2.6rem,7.5vw,6.4rem);font-weight:700}
 .lead{font-size:clamp(1.05rem,1.5vw,1.35rem);color:var(--mute);font-weight:300;max-width:60ch}
 /* justified body copy site-wide */
@@ -509,10 +513,10 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   </div>
   <canvas id="dust"></canvas>
   <div class="hero-inner">
-    <span class="eyebrow reveal">Fine finishing · electrical · mechanical · IT infrastructure</span>
+    <span class="eyebrow reveal">Finishing · Electrical · Mechanical · HVAC · Furnishing · IT infrastructure</span>
     <h1 class="display">
-      <span class="ln"><span>Vertically specialized</span></span>
-      <span class="ln"><span>in finishing works.</span></span>
+      <span class="ln"><span>Design &amp; Build</span></span>
+      <span class="ln"><span>Fitout Experts</span></span>
     </h1>
     <p class="lead reveal">With our wide experience in finishing, we are committed to deliver
       world class finishing services.</p>
