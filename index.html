@@ -133,9 +133,9 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 .burger span{width:24px;height:1.5px;background:var(--paper);transition:.3s var(--ease)}
 
 /* ---------- hero ---------- */
-.hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;overflow:hidden;
+.hero{min-height:100svh;display:flex;align-items:flex-start;position:relative;overflow:hidden;
   isolation:isolate;background:var(--ink);
-  padding-bottom:clamp(48px,8vh,90px)}
+  padding-top:clamp(128px,20vh,210px);padding-bottom:clamp(48px,8vh,90px)}
 .hero-media{position:absolute;inset:0;z-index:0}
 .hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   filter:grayscale(.4) contrast(1.05);opacity:0;transform:scale(1.06);
@@ -149,15 +149,18 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 @keyframes heroKen{from{transform:scale(1.06)}to{transform:scale(1.17)}}
 .hero-media::after{content:"";position:absolute;inset:0;
   background:
-    linear-gradient(180deg,rgba(192,192,192,.72) 0%,rgba(192,192,192,.18) 35%,rgba(192,192,192,.97) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.52) 0%,rgba(0,0,0,.16) 32%,transparent 48%),
+    linear-gradient(180deg,rgba(192,192,192,.10) 0%,rgba(192,192,192,.16) 35%,rgba(192,192,192,.97) 100%),
     radial-gradient(120% 90% at 80% 10%,rgba(22,61,99,.35),transparent 60%);
   mix-blend-mode:normal}
 .hero canvas{position:absolute;inset:0;z-index:1;opacity:.5}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
-.hero h1{margin:22px 0 26px;max-width:16ch}
+.hero h1{margin:20px 0 22px;max-width:16ch;
+  font-size:clamp(2.1rem,5.2vw,4.2rem);color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.hero .lead{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5)}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln span{display:block;transform:translateY(110%)}
-.hero .lead{margin-bottom:38px}
+.hero .lead{margin-bottom:34px}
 .hero-row{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
 .scroll-cue{position:absolute;bottom:34px;right:var(--pad);font-family:var(--m);font-size:10px;
   letter-spacing:.25em;color:var(--mute);writing-mode:vertical-rl;display:flex;align-items:center;gap:14px}
