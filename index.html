@@ -157,13 +157,15 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   mix-blend-mode:normal}
 .hero canvas{position:absolute;inset:0;z-index:1;opacity:.5}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
-.hero h1{margin:20px 0 22px;max-width:16ch;
+.hero h1{margin:0 0 22px;max-width:16ch;
   font-size:clamp(2.1rem,5.2vw,4.2rem);color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.55)}
 .hero .lead{color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.5)}
 .hero h1 .ln{display:block;overflow:hidden}
 .hero h1 .ln span{display:block;transform:translateY(110%)}
 .hero .lead{margin-bottom:34px}
 .hero-row{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+/* hero eyebrow sits low in the video frame, well below the CTA row */
+.hero .eyebrow{margin-top:clamp(84px,18vh,190px)}
 .scroll-cue{position:absolute;bottom:34px;right:var(--pad);font-family:var(--m);font-size:10px;
   letter-spacing:.25em;color:var(--mute);writing-mode:vertical-rl;display:flex;align-items:center;gap:14px}
 .scroll-cue::after{content:"";width:1px;height:56px;background:linear-gradient(var(--steel),transparent);
@@ -524,7 +526,6 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
   </div>
   <canvas id="dust"></canvas>
   <div class="hero-inner">
-    <span class="eyebrow reveal">Finishing · Electrical · Mechanical · HVAC · Furnishing · IT infrastructure</span>
     <h1 class="display">
       <span class="ln"><span>Design &amp; Build</span></span>
       <span class="ln"><span>Fitout Experts</span></span>
@@ -540,6 +541,7 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
         <span class="t">About us</span>
       </a>
     </div>
+    <span class="eyebrow reveal">Finishing · Electrical · Mechanical · HVAC · Furnishing · IT infrastructure</span>
   </div>
   <div class="scroll-cue">SCROLL</div>
 </header>
