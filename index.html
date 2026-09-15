@@ -61,9 +61,9 @@ h1,h2,h3,h4{font-family:var(--d);font-weight:600;line-height:1.02;letter-spacing
   text-transform:uppercase;color:var(--steel-deep);display:inline-flex;align-items:center;gap:14px;
 }
 .eyebrow::before{content:"";width:34px;height:1px;background:currentColor;opacity:.7}
-/* hero sits on dark video: use a bright blue that stays legible */
-.hero .eyebrow{color:var(--navy-on-dark);text-shadow:0 1px 10px rgba(0,0,0,.65)}
-.hero .eyebrow::before{background:var(--navy-on-dark);opacity:.85}
+/* hero eyebrow: site navy, matching the rest of the page */
+.hero .eyebrow{color:var(--steel-deep);text-shadow:0 1px 10px rgba(0,0,0,.65)}
+.hero .eyebrow::before{background:var(--steel-deep);opacity:.85}
 /* long hero eyebrow: let it wrap instead of overflowing on narrow screens */
 .hero .eyebrow{flex-wrap:wrap;max-width:100%}
 @media (max-width:620px){.hero .eyebrow{font-size:10px;letter-spacing:.2em;gap:10px}
