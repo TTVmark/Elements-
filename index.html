@@ -17,12 +17,12 @@
   --ink-3:#ACACAC;
   --slate:#4C515A;
   --line:#9A9A9A;
-  --navy:#163D63;
-  --navy-glow:#163D63;
-  --steel:#163D63;
-  --steel-deep:#163D63;
+  --navy:#1F5B94;
+  --navy-glow:#1F5B94;
+  --steel:#1F5B94;
+  --steel-deep:#1F5B94;
   /* same navy, lightened — only for elements sitting on the black loader/lightbox/video */
-  --navy-on-dark:#5C93D1;
+  --navy-on-dark:#7CB0E3;
   --paper:#171512;
   --mute:#3A3630;
   --white:#FFFFFF;
@@ -68,6 +68,8 @@ h1,h2,h3,h4{font-family:var(--d);font-weight:600;line-height:1.02;letter-spacing
 .lead{font-size:clamp(1.05rem,1.5vw,1.35rem);color:var(--mute);font-weight:300;max-width:60ch}
 /* justified body copy site-wide */
 p,.lead,.faq-a-inner,.ethos-cell p,.cap-cell p,.spec-cell p{text-align:justify}
+.cta-band .eyebrow{color:var(--navy-on-dark)}
+.cta-band .eyebrow::before{background:var(--navy-on-dark)}
 .cta-band p,.branch-row p,.foot-col li,.foot-bottom span{text-align:left}
 .cta-band .lead{text-align:center}
 
@@ -83,7 +85,7 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 .cursor-ring{width:42px;height:42px;border:1px solid rgba(255,255,255,.7);
   transform:translate(-50%,-50%);transition:width .35s var(--ease),height .35s var(--ease),
   border-color .35s var(--ease),background .35s var(--ease)}
-.cursor-ring.hover{width:66px;height:66px;border-color:transparent;background:rgba(127,166,201,.18)}
+.cursor-ring.hover{width:66px;height:66px;border-color:transparent;background:rgba(31,91,148,.18)}
 .cursor-ring.view{width:88px;height:88px;border-color:transparent;background:var(--navy)}
 .cursor-ring .lbl{font-family:var(--m);font-size:9px;letter-spacing:.2em;color:#fff;
   opacity:0;transition:opacity .3s;position:absolute;inset:0;display:grid;place-items:center}
@@ -105,7 +107,7 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   padding:22px var(--pad);display:flex;align-items:center;justify-content:space-between;
   transition:padding .4s var(--ease),background .4s var(--ease),border-color .4s var(--ease);
   border-bottom:1px solid transparent}
-.nav.scrolled{padding:14px var(--pad);background:rgba(146,142,133,.82);
+.nav.scrolled{padding:14px var(--pad);background:rgba(192,192,192,.82);
   backdrop-filter:blur(14px);border-color:var(--line)}
 .brand{display:flex;align-items:center;gap:14px}
 .brand img{height:46px;width:auto;display:block}
@@ -143,7 +145,7 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 @keyframes heroKen{from{transform:scale(1.06)}to{transform:scale(1.17)}}
 .hero-media::after{content:"";position:absolute;inset:0;
   background:
-    linear-gradient(180deg,rgba(146,142,133,.72) 0%,rgba(146,142,133,.18) 35%,rgba(146,142,133,.97) 100%),
+    linear-gradient(180deg,rgba(192,192,192,.72) 0%,rgba(192,192,192,.18) 35%,rgba(192,192,192,.97) 100%),
     radial-gradient(120% 90% at 80% 10%,rgba(22,61,99,.35),transparent 60%);
   mix-blend-mode:normal}
 .hero canvas{position:absolute;inset:0;z-index:1;opacity:.5}
@@ -165,12 +167,12 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
   font-size:14px;letter-spacing:.01em;padding:16px 30px;border-radius:44px;position:relative;
   overflow:hidden;cursor:pointer;will-change:transform}
 .btn .t{position:relative;z-index:2}
-.btn-fill{background:var(--navy);color:#fff;box-shadow:0 0 0 0 rgba(22,61,99,.5)}
+.btn-fill{background:var(--navy);color:#fff;box-shadow:0 0 0 0 rgba(31,91,148,.5)}
 .btn-fill::before{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(120deg,var(--navy),var(--navy-glow));
   transform:translateY(101%);transition:transform .5s var(--ease)}
 .btn-fill:hover::before{transform:translateY(0)}
-.btn-fill:hover{box-shadow:0 18px 50px -16px rgba(22,61,99,.7)}
+.btn-fill:hover{box-shadow:0 18px 50px -16px rgba(31,91,148,.7)}
 .btn-ghost{border:1px solid var(--line);color:var(--paper)}
 .btn-ghost::before{content:"";position:absolute;inset:0;z-index:1;background:var(--ink-3);
   transform:translateY(101%);transition:transform .5s var(--ease)}
@@ -248,7 +250,7 @@ section{position:relative;z-index:1;background:var(--ink);isolation:isolate}
 /* badge pinned top-right, clear of the bottom caption */
 .proj-card .count{position:absolute;top:14px;right:14px;z-index:3;
   font-family:var(--m);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:#fff;background:rgba(22,61,99,.82);border:1px solid var(--steel);backdrop-filter:blur(6px);
+  color:#fff;background:rgba(31,91,148,.82);border:1px solid var(--steel);backdrop-filter:blur(6px);
   padding:7px 13px;border-radius:40px;white-space:nowrap;transition:.4s var(--ease)}
 .proj-card:hover .count{background:var(--navy);border-color:var(--navy)}
 @media (max-width:980px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
@@ -394,12 +396,12 @@ footer{border-top:1px solid var(--line);padding-top:clamp(60px,8vw,90px)}
 .branch-row h5{font-family:var(--m);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--steel);min-width:118px;flex-shrink:0;padding-top:2px}
 .branch-row p{color:#FFFFFF;font-size:.96rem;line-height:1.7;text-shadow:0 1px 8px rgba(0,0,0,.55)}
-.branch-row a{color:#FFFFFF}.branch-row a:hover{color:var(--steel)}
-.branch-row h5{color:var(--steel);text-shadow:0 1px 8px rgba(0,0,0,.55)}
+.branch-row a{color:#FFFFFF}.branch-row a:hover{color:var(--navy-on-dark)}
+.branch-row h5{color:var(--navy-on-dark);text-shadow:0 1px 8px rgba(0,0,0,.55)}
 .branch .pin{display:inline-flex;align-items:center;gap:8px;margin-top:2px;
   font-family:var(--m);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#FFFFFF}
-.branch .pin svg{flex-shrink:0;color:var(--steel)}
-.branch .pin:hover{color:var(--steel)}
+.branch .pin svg{flex-shrink:0;color:var(--navy-on-dark)}
+.branch .pin:hover{color:var(--navy-on-dark)}
 @media (max-width:760px){.branches{grid-template-columns:1fr}.branch-row{flex-direction:column;gap:6px}}
 
 /* ---------- lightbox project list ---------- */
@@ -1092,7 +1094,6 @@ const GALLERIES={
   "images/Offices/590df30f-43b6-4e58-b0ac-672ed75ecaa6.jpg",
   "images/Offices/5b3db2c9-5eef-4d53-8285-3d2f9e113476.jpg",
   "images/Offices/7e905792-f4ee-4979-913a-b722a83eb98e.jpg",
-  "images/Offices/b436b4c8-35d3-40b3-9ddd-563f791075b3.jpg",
   "images/Offices/d7795fc4-c826-4d69-aae0-7fe603a18278.jpg",
   "images/Offices/f735b312-2eab-4adc-91ef-5fb037cd22b6.jpg",
   "images/Offices/fc7de2e9-0170-4133-870a-4fb832ef81d2.jpg"
